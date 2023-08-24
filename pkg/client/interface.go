@@ -1,8 +1,8 @@
 package client
 
 import (
-	"ecclesiafoundation.org/scripture-api-bible-client/pkg/client/internal"
-	"ecclesiafoundation.org/scripture-api-bible-client/pkg/client/params"
+	"ecclesiafoundation.org/APIBibleClient/pkg/client/internal"
+	"ecclesiafoundation.org/APIBibleClient/pkg/client/params"
 )
 
 // RetrieveApiKey retrieves API key from

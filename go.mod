@@ -1,3 +1,3 @@
-module ecclesiafoundation.org/scripture-api-bible-client
+module ecclesiafoundation.org/APIBibleClient
 
 go 1.21.0

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"ecclesiafoundation.org/scripture-api-bible-client/pkg/client"
-	"ecclesiafoundation.org/scripture-api-bible-client/pkg/client/params"
+	"ecclesiafoundation.org/APIBibleClient/pkg/client"
+	"ecclesiafoundation.org/APIBibleClient/pkg/client/params"
 	"fmt"
 	"os"
 )

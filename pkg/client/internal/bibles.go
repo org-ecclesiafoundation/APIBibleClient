@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"ecclesiafoundation.org/scripture-api-bible-client/pkg/client/params"
+	"ecclesiafoundation.org/APIBibleClient/pkg/client/params"
 	"io"
 	"net/http"
 	"net/url"
