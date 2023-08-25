@@ -7,8 +7,8 @@ import (
 
 // The GetBibles function calls the
 // `/bibles` end point of the API
-func GetBibles(apiKey string, params params.BiblesParams) (string, error) {
-	return internal.GetBibles(apiKey, &params)
+func GetBibles(apiKey string, params *params.BiblesParams) (string, error) {
+	return internal.GetBibles(apiKey, params)
 }
 
 // The GetBibleById function calls the
@@ -19,8 +19,8 @@ func GetBibleById(apiKey string, bibleId string) (string, error) {
 
 // The GetAudioBibles function calls the
 // `/audio-bibles` end point of the API
-func GetAudioBibles(apiKey string, params params.AudioBiblesParams) (string, error) {
-	return internal.GetAudioBibles(apiKey, &params)
+func GetAudioBibles(apiKey string, params *params.AudioBiblesParams) (string, error) {
+	return internal.GetAudioBibles(apiKey, params)
 }
 
 // The GetAudioBibleById function calls the
@@ -31,6 +31,6 @@ func GetAudioBibleById(apiKey string, bibleId string) (string, error) {
 
 // The GetBibleBooks function calls the
 // `/bibles/{bibleId}/books` end point of the API
-func GetBibleBooks(apiKey string, bibleId string, params params.BibleBooksParams) (string, error) {
-	return internal.GetBibleBooks(apiKey, bibleId, &params)
+func GetBibleBooks(apiKey string, bibleId string, params *params.BibleBooksParams) (string, error) {
+	return internal.GetBibleBooks(apiKey, bibleId, params)
 }

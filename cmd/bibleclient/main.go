@@ -19,7 +19,7 @@ func main() {
 		fmt.Println(apiKeyErr)
 	} else {
 		fmt.Println("Test `GetBibles`")
-		bibles, biblesErr := client.GetBibles(apiKey, params.BiblesParams{Abbreviation: "kjv"})
+		bibles, biblesErr := client.GetBibles(apiKey, &params.BiblesParams{Abbreviation: "kjv"})
 		printAndPrettyPrintJsonString(bibles, biblesErr)
 
 		fmt.Println("Test `GetBibleById`")
@@ -27,7 +27,7 @@ func main() {
 		printAndPrettyPrintJsonString(kjv, kjvErr)
 
 		fmt.Println("Test `GetAudioBibles`")
-		audioBibles, audioBiblesErr := client.GetAudioBibles(apiKey, params.AudioBiblesParams{})
+		audioBibles, audioBiblesErr := client.GetAudioBibles(apiKey, &params.AudioBiblesParams{})
 		printAndPrettyPrintJsonString(audioBibles, audioBiblesErr)
 
 		fmt.Println("Test `GetAudioBibleById`")
@@ -35,7 +35,7 @@ func main() {
 		printAndPrettyPrintJsonString(audioWEB, audioWEBErr)
 
 		fmt.Println("Test `GetBibleBooks`")
-		kjvBooks, kjvBooksErr := client.GetBibleBooks(apiKey, kjvBibleId, params.BibleBooksParams{})
+		kjvBooks, kjvBooksErr := client.GetBibleBooks(apiKey, kjvBibleId, &params.BibleBooksParams{})
 		printAndPrettyPrintJsonString(kjvBooks, kjvBooksErr)
 	}
 }
