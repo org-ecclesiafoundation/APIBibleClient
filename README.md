@@ -5,10 +5,10 @@ Go Language API Bible Client for the https://scripture.api.bible site
 ### Bibles (Fetch Bibles and metadata)
 #### GET /v1/bibles
 #### GET /v1/bibles/{bibleId}
+#### GET /v1/audio-bibles
 ## TODO
 ### Keep up on the scripture.api.bible live documentation
 ### Bibles (Fetch Bibles and metadata)
-#### GET /v1/audio-bibles
 #### GET /v1/audio-bibles/{audioBibleId}
 ### Books
 #### GET /v1/bibles/{bibleId}/books

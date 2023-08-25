@@ -41,5 +41,17 @@ func main() {
 				fmt.Println(cleanKjv)
 			}
 		}
+		audioKjv, audioKjvErr := client.GetAudioBibles(apiKey, params.AudioBiblesParams{})
+		if audioKjvErr != nil {
+			fmt.Println(audioKjvErr)
+		} else {
+			fmt.Println(audioKjv)
+			cleanAudioKjv, cleanErr := utils.Prettify(audioKjv)
+			if cleanErr != nil {
+				fmt.Println(cleanErr)
+			} else {
+				fmt.Println(cleanAudioKjv)
+			}
+		}
 	}
 }
