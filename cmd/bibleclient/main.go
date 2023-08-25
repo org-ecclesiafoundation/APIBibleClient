@@ -66,5 +66,17 @@ func main() {
 				fmt.Println(cleanAudioWEB)
 			}
 		}
+		kjvBooks, kjvBooksErr := client.GetBibleBooks(apiKey, kjvBibleId, params.BibleBookParams{})
+		if kjvBooksErr != nil {
+			fmt.Println(kjvBooksErr)
+		} else {
+			fmt.Println(kjvBooks)
+			cleanKjvBooks, cleanErr := utils.Prettify(kjvBooks)
+			if cleanErr != nil {
+				fmt.Println(cleanErr)
+			} else {
+				fmt.Println(cleanKjvBooks)
+			}
+		}
 	}
 }

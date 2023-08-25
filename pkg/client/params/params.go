@@ -29,7 +29,7 @@ func (params *BiblesParams) ProduceQueryParameters() url.Values {
 	if params.Ids != nil {
 		values.Add("ids", strings.Join(params.Ids, ","))
 	}
-	if params.IncludeFullDetails == true {
+	if params.IncludeFullDetails {
 		values.Add("include-full-details", "true")
 	}
 	return values
@@ -59,8 +59,26 @@ func (params *AudioBiblesParams) ProduceQueryParameters() url.Values {
 	if params.RelatedTextBibleId != "" {
 		values.Add("bibleId", params.RelatedTextBibleId)
 	}
-	if params.IncludeFullDetails == true {
+	if params.IncludeFullDetails {
 		values.Add("include-full-details", "true")
+	}
+	return values
+}
+
+// The BibleBookParams struct contains all optional parameters
+// for the API call to the `bibles/{bibleId}/books` end point
+type BibleBookParams struct {
+	includeChapters            bool
+	includeChaptersAndSections bool
+}
+
+func (params *BibleBookParams) ProduceQueryParameters() url.Values {
+	values := url.Values{}
+	if params.includeChapters {
+		values.Add("include-chapters", "true")
+	}
+	if params.includeChaptersAndSections {
+		values.Add("include-chapters", "true")
 	}
 	return values
 }

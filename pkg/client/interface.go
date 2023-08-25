@@ -25,3 +25,7 @@ func GetAudioBibles(apiKey string, params params.AudioBiblesParams) (string, err
 func GetAudioBibleById(apiKey string, bibleId string) (string, error) {
 	return internal.GetAudioBibleById(apiKey, bibleId)
 }
+
+func GetBibleBooks(apiKey string, bibleId string, params params.BibleBookParams) (string, error) {
+	return internal.GetBibleBooks(apiKey, bibleId, params)
+}
