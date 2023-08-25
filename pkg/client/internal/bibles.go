@@ -2,9 +2,7 @@ package internal
 
 import (
 	"ecclesiafoundation.org/APIBibleClient/pkg/client/params"
-	"ecclesiafoundation.org/APIBibleClient/pkg/utils"
 	"fmt"
-	"net/http"
 	"net/url"
 )
 
@@ -12,10 +10,7 @@ func GetBibles(apiKey string, params *params.BiblesParams) (string, error) {
 	header := produceHttpHeader(apiKey)
 	apiUrl := produceBiblesApiUrl(params)
 	request := produceHttpRequest(apiUrl, header)
-	httpClient := &http.Client{
-		Timeout: utils.GetRequestTimeout(),
-	}
-	response, getRequestErr := httpClient.Do(&request)
+	response, getRequestErr := sendHttpRequest(request)
 	return handleHttpResponse(response, getRequestErr)
 }
 
@@ -23,10 +18,7 @@ func GetBibleById(apiKey string, bibleId string) (string, error) {
 	header := produceHttpHeader(apiKey)
 	apiUrl := produceBibleApiUrl(bibleId)
 	request := produceHttpRequest(apiUrl, header)
-	httpClient := &http.Client{
-		Timeout: utils.GetRequestTimeout(),
-	}
-	response, getRequestErr := httpClient.Do(&request)
+	response, getRequestErr := sendHttpRequest(request)
 	return handleHttpResponse(response, getRequestErr)
 }
 

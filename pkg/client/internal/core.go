@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"ecclesiafoundation.org/APIBibleClient/pkg/utils"
 	"encoding/json"
 	"io"
 	"net/http"
@@ -30,6 +31,13 @@ func produceHttpRequest(apiUrl *url.URL, header http.Header) http.Request {
 		URL:    apiUrl,
 		Header: header,
 	}
+}
+
+func sendHttpRequest(request http.Request) (*http.Response, error) {
+	httpClient := &http.Client{
+		Timeout: utils.GetRequestTimeout(),
+	}
+	return httpClient.Do(&request)
 }
 
 func handleHttpResponse(response *http.Response, err error) (string, error) {

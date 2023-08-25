@@ -12,6 +12,7 @@ func main() {
 	fmt.Println("args:", os.Args)
 	kjvBibleId := "de4e12af7f28f599-02"
 	fmt.Printf("KJV Bible ID: %s\n", kjvBibleId)
+	webAudioBibleId := "105a06b6146d11e7-01"
 
 	apiKey, apiKeyErr := utils.GetApiKey()
 	if apiKeyErr != nil {
@@ -41,16 +42,28 @@ func main() {
 				fmt.Println(cleanKjv)
 			}
 		}
-		audioKjv, audioKjvErr := client.GetAudioBibles(apiKey, params.AudioBiblesParams{})
-		if audioKjvErr != nil {
-			fmt.Println(audioKjvErr)
+		audioBibles, audioBiblesErr := client.GetAudioBibles(apiKey, params.AudioBiblesParams{})
+		if audioBiblesErr != nil {
+			fmt.Println(audioBiblesErr)
 		} else {
-			fmt.Println(audioKjv)
-			cleanAudioKjv, cleanErr := utils.Prettify(audioKjv)
+			fmt.Println(audioBibles)
+			cleanAudioKjv, cleanErr := utils.Prettify(audioBibles)
 			if cleanErr != nil {
 				fmt.Println(cleanErr)
 			} else {
 				fmt.Println(cleanAudioKjv)
+			}
+		}
+		audioWEB, audioWEBErr := client.GetAudioBibleById(apiKey, webAudioBibleId)
+		if audioWEBErr != nil {
+			fmt.Println(audioWEBErr)
+		} else {
+			fmt.Println(audioWEB)
+			cleanAudioWEB, cleanErr := utils.Prettify(audioWEB)
+			if cleanErr != nil {
+				fmt.Println(cleanErr)
+			} else {
+				fmt.Println(cleanAudioWEB)
 			}
 		}
 	}

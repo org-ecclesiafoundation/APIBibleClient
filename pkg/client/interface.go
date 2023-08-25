@@ -19,3 +19,9 @@ func GetBibleById(apiKey string, bibleId string) (string, error) {
 func GetAudioBibles(apiKey string, params params.AudioBiblesParams) (string, error) {
 	return internal.GetAudioBibles(apiKey, &params)
 }
+
+// The GetAudioBibleById function calls the
+// `/audio-bibles/{audioBibleId}` end point of the API
+func GetAudioBibleById(apiKey string, bibleId string) (string, error) {
+	return internal.GetAudioBibleById(apiKey, bibleId)
+}
