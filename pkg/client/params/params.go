@@ -102,3 +102,35 @@ func (params *BibleBookParams) ProduceQueryParameters() url.Values {
 	}
 	return values
 }
+
+// The BibleBooksParams struct contains all optional parameters
+// for the API call to the `bibles/{audioBibleId}/books` end point
+type AudioBibleBooksParams struct {
+	includeChapters            bool
+	includeChaptersAndSections bool
+}
+
+func (params *AudioBibleBooksParams) ProduceQueryParameters() url.Values {
+	values := url.Values{}
+	if params.includeChapters {
+		values.Add("include-chapters", "true")
+	}
+	if params.includeChaptersAndSections {
+		values.Add("include-chapters", "true")
+	}
+	return values
+}
+
+// The AudioBibleBookParams struct contains all optional parameters
+// for the API call to the `audio-bibles/{audioBibleId}/books/{bookId}` end point
+type AudioBibleBookParams struct {
+	includeChapters bool
+}
+
+func (params *AudioBibleBookParams) ProduceQueryParameters() url.Values {
+	values := url.Values{}
+	if params.includeChapters {
+		values.Add("include-chapters", "true")
+	}
+	return values
+}

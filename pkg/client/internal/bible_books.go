@@ -12,7 +12,7 @@ func GetBibleBooks(apiKey string, bibleId string, params *params.BibleBooksParam
 }
 
 func GetBibleBookById(apiKey string, bibleId string, bookId string, params *params.BibleBookParams) (string, error) {
-	apiUrl := produceBibleBookApiUrl(bibleId, bookId)
+	apiUrl := produceBibleBookApiUrl(bibleId, bookId, params)
 	return genericGetRequest(apiKey, apiUrl)
 }
 
@@ -21,7 +21,7 @@ func produceBibleBooksApiUrl(bibleId string, params *params.BibleBooksParams) *u
 	return produceGenericUrlWithQueryParams(path, params)
 }
 
-func produceBibleBookApiUrl(bibleId string, bookId string) *url.URL {
+func produceBibleBookApiUrl(bibleId string, bookId string, params *params.BibleBookParams) *url.URL {
 	path := fmt.Sprintf("/bibles/%s/books/%s", bibleId, bookId)
-	return produceGenericUrl(path)
+	return produceGenericUrlWithQueryParams(path, params)
 }
