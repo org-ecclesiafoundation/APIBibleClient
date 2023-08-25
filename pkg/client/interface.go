@@ -26,6 +26,8 @@ func GetAudioBibleById(apiKey string, bibleId string) (string, error) {
 	return internal.GetAudioBibleById(apiKey, bibleId)
 }
 
+// The GetBibleBooks function calls the
+// `/bibles/{bibleId}/books` end point of the API
 func GetBibleBooks(apiKey string, bibleId string, params params.BibleBookParams) (string, error) {
 	return internal.GetBibleBooks(apiKey, bibleId, params)
 }
