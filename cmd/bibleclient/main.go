@@ -66,7 +66,7 @@ func main() {
 				fmt.Println(cleanAudioWEB)
 			}
 		}
-		kjvBooks, kjvBooksErr := client.GetBibleBooks(apiKey, kjvBibleId, params.BibleBookParams{})
+		kjvBooks, kjvBooksErr := client.GetBibleBooks(apiKey, kjvBibleId, params.BibleBooksParams{})
 		if kjvBooksErr != nil {
 			fmt.Println(kjvBooksErr)
 		} else {

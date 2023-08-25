@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"ecclesiafoundation.org/APIBibleClient/pkg/client/params"
 	"ecclesiafoundation.org/APIBibleClient/pkg/utils"
 	"encoding/json"
 	"io"
@@ -23,6 +24,23 @@ func produceHttpHeader(apiKey string) http.Header {
 
 func produceApiPath(endPoint string) string {
 	return path.Join("/", ApiVersion, endPoint)
+}
+
+func produceGenericUrl(path string) *url.URL {
+	return &url.URL{
+		Scheme: "https",
+		Host:   ApiURL,
+		Path:   produceApiPath(path),
+	}
+}
+
+func produceGenericUrlWithQueryParams(path string, params params.QueryParams) *url.URL {
+	return &url.URL{
+		Scheme:   "https",
+		Host:     ApiURL,
+		Path:     produceApiPath(path),
+		RawQuery: params.ProduceQueryParameters().Encode(),
+	}
 }
 
 func produceHttpRequest(apiUrl *url.URL, header http.Header) http.Request {
@@ -54,6 +72,13 @@ func handleHttpResponse(response *http.Response, err error) (string, error) {
 			return CleanJson(string(body))
 		}
 	}
+}
+
+func genericGetRequest(apiKey string, apiUrl *url.URL) (string, error) {
+	header := produceHttpHeader(apiKey)
+	request := produceHttpRequest(apiUrl, header)
+	response, getRequestErr := sendHttpRequest(request)
+	return handleHttpResponse(response, getRequestErr)
 }
 
 func CleanJson(body string) (string, error) {

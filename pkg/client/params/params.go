@@ -5,6 +5,10 @@ import (
 	"strings"
 )
 
+type QueryParams interface {
+	ProduceQueryParameters() url.Values
+}
+
 // The BiblesParams struct contains all optional parameters
 // for the API call to the `bibles` end point.
 type BiblesParams struct {
@@ -65,14 +69,14 @@ func (params *AudioBiblesParams) ProduceQueryParameters() url.Values {
 	return values
 }
 
-// The BibleBookParams struct contains all optional parameters
+// The BibleBooksParams struct contains all optional parameters
 // for the API call to the `bibles/{bibleId}/books` end point
-type BibleBookParams struct {
+type BibleBooksParams struct {
 	includeChapters            bool
 	includeChaptersAndSections bool
 }
 
-func (params *BibleBookParams) ProduceQueryParameters() url.Values {
+func (params *BibleBooksParams) ProduceQueryParameters() url.Values {
 	values := url.Values{}
 	if params.includeChapters {
 		values.Add("include-chapters", "true")

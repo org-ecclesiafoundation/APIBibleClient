@@ -7,36 +7,21 @@ import (
 )
 
 func GetBibles(apiKey string, params *params.BiblesParams) (string, error) {
-	header := produceHttpHeader(apiKey)
 	apiUrl := produceBiblesApiUrl(params)
-	request := produceHttpRequest(apiUrl, header)
-	response, getRequestErr := sendHttpRequest(request)
-	return handleHttpResponse(response, getRequestErr)
+	return genericGetRequest(apiKey, apiUrl)
 }
 
 func GetBibleById(apiKey string, bibleId string) (string, error) {
-	header := produceHttpHeader(apiKey)
 	apiUrl := produceBibleApiUrl(bibleId)
-	request := produceHttpRequest(apiUrl, header)
-	response, getRequestErr := sendHttpRequest(request)
-	return handleHttpResponse(response, getRequestErr)
+	return genericGetRequest(apiKey, apiUrl)
 }
 
 func produceBiblesApiUrl(params *params.BiblesParams) *url.URL {
 	path := "/bibles"
-	return &url.URL{
-		Scheme:   "https",
-		Host:     ApiURL,
-		Path:     produceApiPath(path),
-		RawQuery: params.ProduceQueryParameters().Encode(),
-	}
+	return produceGenericUrlWithQueryParams(path, params)
 }
 
 func produceBibleApiUrl(bibleId string) *url.URL {
 	path := fmt.Sprintf("/bibles/%s", bibleId)
-	return &url.URL{
-		Scheme: "https",
-		Host:   ApiURL,
-		Path:   produceApiPath(path),
-	}
+	return produceGenericUrl(path)
 }

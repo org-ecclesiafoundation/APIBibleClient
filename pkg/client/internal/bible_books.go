@@ -6,20 +6,12 @@ import (
 	"net/url"
 )
 
-func GetBibleBooks(apiKey string, bibleId string, params params.BibleBookParams) (string, error) {
-	header := produceHttpHeader(apiKey)
+func GetBibleBooks(apiKey string, bibleId string, params *params.BibleBooksParams) (string, error) {
 	apiUrl := produceBibleBooksApiUrl(bibleId, params)
-	request := produceHttpRequest(apiUrl, header)
-	response, getRequestErr := sendHttpRequest(request)
-	return handleHttpResponse(response, getRequestErr)
+	return genericGetRequest(apiKey, apiUrl)
 }
 
-func produceBibleBooksApiUrl(bibleId string, params params.BibleBookParams) *url.URL {
+func produceBibleBooksApiUrl(bibleId string, params *params.BibleBooksParams) *url.URL {
 	path := fmt.Sprintf("/bibles/%s/books", bibleId)
-	return &url.URL{
-		Scheme:   "https",
-		Host:     ApiURL,
-		Path:     produceApiPath(path),
-		RawQuery: params.ProduceQueryParameters().Encode(),
-	}
+	return produceGenericUrlWithQueryParams(path, params)
 }
