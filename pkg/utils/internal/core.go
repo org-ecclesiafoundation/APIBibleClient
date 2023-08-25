@@ -4,22 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"time"
 )
-
-const (
-	RequestTimeout = 5 * time.Second
-)
-
-func GetRequestTimeout() time.Duration {
-	fromEnv := os.Getenv("SCRIPTURE_API_BIBLE_REQUEST_TIMEOUT")
-	timeout, timeoutErr := time.ParseDuration(fromEnv)
-	if timeoutErr != nil {
-		return RequestTimeout
-	} else {
-		return timeout
-	}
-}
 
 func GetApiKey() (string, error) {
 	apiKey := os.Getenv("SCRIPTURE_API_BIBLE_KEY")
