@@ -10,12 +10,12 @@ Go Language API Bible Client for the https://scripture.api.bible site
 ### Books (Fetch Books for a Bible)
 #### GET /v1/bibles/{bibleId}/books
 #### GET /v1/bibles/{bibleId}/books/{bookId}
+#### GET /v1/audio-bibles/{audioBibleId}/books
+#### GET /v1/audio-bibles/{audioBibleId}/books/{bookId}
 ## TODO
 ### Figure out the licensing and annotate files accordingly (Linux?)
 ### Keep up on the scripture.api.bible live documentation
 ### Books (Fetch Books for a Bible)
-#### GET /v1/audio-bibles/{audioBibleId}/books
-#### GET /v1/audio-bibles/{audioBibleId}/books/{bookId}
 ### Chapters (Fetch Chapters for a Bible)
 #### GET /v1/bibles/{bibleId}/books/{bookId}/chapters
 #### GET /v1/bibles/{bibleId}/chapters/{chapterId}
