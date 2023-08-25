@@ -13,6 +13,7 @@ func main() {
 	kjvBibleId := "de4e12af7f28f599-02"
 	fmt.Printf("KJV Bible ID: %s\n", kjvBibleId)
 	webAudioBibleId := "105a06b6146d11e7-01"
+	bookOfGenesisId := "GEN"
 
 	apiKey, apiKeyErr := utils.GetApiKey()
 	if apiKeyErr != nil {
@@ -37,6 +38,10 @@ func main() {
 		fmt.Println("Test `GetBibleBooks`")
 		kjvBooks, kjvBooksErr := client.GetBibleBooks(apiKey, kjvBibleId, &params.BibleBooksParams{})
 		printAndPrettyPrintJsonString(kjvBooks, kjvBooksErr)
+
+		fmt.Println("Test `GetBibleBookById`")
+		kjvBook, kjvBookErr := client.GetBibleBookById(apiKey, kjvBibleId, bookOfGenesisId, &params.BibleBookParams{})
+		printAndPrettyPrintJsonString(kjvBook, kjvBookErr)
 	}
 }
 
