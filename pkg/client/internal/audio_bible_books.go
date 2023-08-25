@@ -12,7 +12,7 @@ func GetAudioBibleBooks(apiKey string, audioBibleId string, params *params.Audio
 }
 
 func GetAudioBibleBookById(apiKey string, audioBibleId string, bookId string, params *params.AudioBibleBookParams) (string, error) {
-	apiUrl := produceAudioBibleBookApiUrl(audioBibleId, bookId)
+	apiUrl := produceAudioBibleBookApiUrl(audioBibleId, bookId, params)
 	return genericGetRequest(apiKey, apiUrl)
 }
 
@@ -21,7 +21,7 @@ func produceAudioBibleBooksApiUrl(audioBibleId string, params *params.AudioBible
 	return produceGenericUrlWithQueryParams(path, params)
 }
 
-func produceAudioBibleBookApiUrl(audioBibleId string, bookId string) *url.URL {
+func produceAudioBibleBookApiUrl(audioBibleId string, bookId string, params *params.AudioBibleBookParams) *url.URL {
 	path := fmt.Sprintf("/audio-bibles/%s/books/%s", audioBibleId, bookId)
-	return produceGenericUrl(path)
+	return produceGenericUrlWithQueryParams(path, params)
 }
