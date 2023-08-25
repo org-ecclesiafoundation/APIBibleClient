@@ -2,39 +2,16 @@ package internal
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"net/url"
-	"os"
 	"path"
-	"time"
 )
 
 const (
-	ApiURL         = "api.scripture.api.bible"
-	ApiVersion     = "v1"
-	RequestTimeout = 5 * time.Second
+	ApiURL     = "api.scripture.api.bible"
+	ApiVersion = "v1"
 )
-
-func GetRequestTimeout() time.Duration {
-	fromEnv := os.Getenv("SCRIPTURE_API_BIBLE_REQUEST_TIMEOUT")
-	timeout, timeoutErr := time.ParseDuration(fromEnv)
-	if timeoutErr != nil {
-		return RequestTimeout
-	} else {
-		return timeout
-	}
-}
-
-func GetApiKey() (string, error) {
-	apiKey := os.Getenv("SCRIPTURE_API_BIBLE_KEY")
-	if apiKey == "" {
-		return "", fmt.Errorf("Please set environment variable SCRIPTURE_API_BIBLE_KEY \n" +
-			"to a valid API key for the scripture.api.bible site")
-	}
-	return apiKey, nil
-}
 
 func produceHttpHeader(apiKey string) http.Header {
 	return http.Header{

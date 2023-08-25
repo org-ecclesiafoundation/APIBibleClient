@@ -13,11 +13,11 @@ func main() {
 	kjvBibleId := "de4e12af7f28f599-02"
 	fmt.Printf("KJV Bible ID: %s\n", kjvBibleId)
 
-	apiKey, apiKeyErr := client.RetrieveApiKey()
+	apiKey, apiKeyErr := utils.GetApiKey()
 	if apiKeyErr != nil {
 		fmt.Println(apiKeyErr)
 	} else {
-		bibles, biblesErr := client.RetrieveBibles(apiKey, params.BiblesParams{Abbreviation: "kjv"})
+		bibles, biblesErr := client.GetBibles(apiKey, params.BiblesParams{Abbreviation: "kjv"})
 		if biblesErr != nil {
 			fmt.Println(biblesErr)
 		} else {
@@ -29,7 +29,7 @@ func main() {
 				fmt.Println(cleanBibles)
 			}
 		}
-		kjv, kjvErr := client.RetrieveBibleById(apiKey, kjvBibleId)
+		kjv, kjvErr := client.GetBibleById(apiKey, kjvBibleId)
 		if kjvErr != nil {
 			fmt.Println(kjvErr)
 		} else {

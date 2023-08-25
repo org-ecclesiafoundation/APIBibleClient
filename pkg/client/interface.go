@@ -5,12 +5,6 @@ import (
 	"ecclesiafoundation.org/APIBibleClient/pkg/client/params"
 )
 
-// GetApiKey retrieves API key from
-// the environment variable, SCRIPTURE_API_BIBLE_KEY
-func GetApiKey() (string, error) {
-	return internal.GetApiKey()
-}
-
 // The GetBibles function calls the `/bibles` end point of the API
 func GetBibles(apiKey string, params params.BiblesParams) (string, error) {
 	return internal.GetBibles(apiKey, &params)
