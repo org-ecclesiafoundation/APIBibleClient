@@ -1,4 +1,4 @@
-module github.com/org-ecclesiafoundation/APIBibleClient
+module ecclesiafoundation.org/APIBibleClient
 
 
 go 1.21.0
