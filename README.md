@@ -8,6 +8,7 @@ Go Language API Bible Client for the https://scripture.api.bible site
 #### GET /v1/audio-bibles
 #### GET /v1/audio-bibles/{audioBibleId}
 ## TODO
+### Figure out the licensing and annotate files accordingly (Linux?)
 ### Keep up on the scripture.api.bible live documentation
 ### Bibles (Fetch Bibles and metadata)
 ### Books
