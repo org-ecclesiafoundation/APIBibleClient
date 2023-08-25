@@ -88,3 +88,17 @@ func (params *BibleBooksParams) ProduceQueryParameters() url.Values {
 	}
 	return values
 }
+
+// The BibleBookParams struct contains all optional parameters
+// for the API call to the `bibles/{bibleId}/books/{bookId}` end point
+type BibleBookParams struct {
+	includeChapters bool
+}
+
+func (params *BibleBookParams) ProduceQueryParameters() url.Values {
+	values := url.Values{}
+	if params.includeChapters {
+		values.Add("include-chapters", "true")
+	}
+	return values
+}

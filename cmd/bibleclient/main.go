@@ -40,7 +40,7 @@ func main() {
 		printAndPrettyPrintJsonString(kjvBooks, kjvBooksErr)
 
 		fmt.Println("Test `GetBibleBookById`")
-		kjvBook, kjvBookErr := client.GetBibleBookById(apiKey, kjvBibleId, bookOfGenesisId, &params.BibleBooksParams{})
+		kjvBook, kjvBookErr := client.GetBibleBookById(apiKey, kjvBibleId, bookOfGenesisId, &params.BibleBookParams{})
 		printAndPrettyPrintJsonString(kjvBook, kjvBookErr)
 	}
 }

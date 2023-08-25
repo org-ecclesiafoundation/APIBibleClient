@@ -11,7 +11,7 @@ func GetBibleBooks(apiKey string, bibleId string, params *params.BibleBooksParam
 	return genericGetRequest(apiKey, apiUrl)
 }
 
-func GetBibleBookById(apiKey string, bibleId string, bookId string, params *params.BibleBooksParams) (string, error) {
+func GetBibleBookById(apiKey string, bibleId string, bookId string, params *params.BibleBookParams) (string, error) {
 	apiUrl := produceBibleBookApiUrl(bibleId, bookId)
 	return genericGetRequest(apiKey, apiUrl)
 }

@@ -35,6 +35,8 @@ func GetBibleBooks(apiKey string, bibleId string, params *params.BibleBooksParam
 	return internal.GetBibleBooks(apiKey, bibleId, params)
 }
 
-func GetBibleBookById(apiKey string, bibleId string, bookId string, params *params.BibleBooksParams) (string, error) {
+// The GetBibleBookById function calls the
+// `/bibles/{bibleId}/books/{bookId}` end point of the API
+func GetBibleBookById(apiKey string, bibleId string, bookId string, params *params.BibleBookParams) (string, error) {
 	return internal.GetBibleBookById(apiKey, bibleId, bookId, params)
 }
