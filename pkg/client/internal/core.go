@@ -34,7 +34,7 @@ func produceGenericUrl(path string) *url.URL {
 	}
 }
 
-func produceGenericUrlWithQueryParams(path string, params params.QueryParams) *url.URL {
+func produceGenericUrlWithQueryParams(path string, params params.CanProduceQueryParams) *url.URL {
 	return &url.URL{
 		Scheme:   "https",
 		Host:     ApiURL,

@@ -5,7 +5,9 @@ import (
 	"strings"
 )
 
-type QueryParams interface {
+// The CanProduceQueryParams interface exists
+// to help with producing URLs with query parameters
+type CanProduceQueryParams interface {
 	ProduceQueryParameters() url.Values
 }
 
