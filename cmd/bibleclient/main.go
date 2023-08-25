@@ -18,65 +18,38 @@ func main() {
 	if apiKeyErr != nil {
 		fmt.Println(apiKeyErr)
 	} else {
+		fmt.Println("Test `GetBibles`")
 		bibles, biblesErr := client.GetBibles(apiKey, params.BiblesParams{Abbreviation: "kjv"})
-		if biblesErr != nil {
-			fmt.Println(biblesErr)
-		} else {
-			fmt.Println(bibles)
-			cleanBibles, cleanErr := utils.Prettify(bibles)
-			if cleanErr != nil {
-				fmt.Println(cleanErr)
-			} else {
-				fmt.Println(cleanBibles)
-			}
-		}
+		printAndPrettyPrintJsonString(bibles, biblesErr)
+
+		fmt.Println("Test `GetBibleById`")
 		kjv, kjvErr := client.GetBibleById(apiKey, kjvBibleId)
-		if kjvErr != nil {
-			fmt.Println(kjvErr)
-		} else {
-			fmt.Println(kjv)
-			cleanKjv, cleanErr := utils.Prettify(kjv)
-			if cleanErr != nil {
-				fmt.Println(cleanErr)
-			} else {
-				fmt.Println(cleanKjv)
-			}
-		}
+		printAndPrettyPrintJsonString(kjv, kjvErr)
+
+		fmt.Println("Test `GetAudioBibles`")
 		audioBibles, audioBiblesErr := client.GetAudioBibles(apiKey, params.AudioBiblesParams{})
-		if audioBiblesErr != nil {
-			fmt.Println(audioBiblesErr)
-		} else {
-			fmt.Println(audioBibles)
-			cleanAudioKjv, cleanErr := utils.Prettify(audioBibles)
-			if cleanErr != nil {
-				fmt.Println(cleanErr)
-			} else {
-				fmt.Println(cleanAudioKjv)
-			}
-		}
+		printAndPrettyPrintJsonString(audioBibles, audioBiblesErr)
+
+		fmt.Println("Test `GetAudioBibleById`")
 		audioWEB, audioWEBErr := client.GetAudioBibleById(apiKey, webAudioBibleId)
-		if audioWEBErr != nil {
-			fmt.Println(audioWEBErr)
-		} else {
-			fmt.Println(audioWEB)
-			cleanAudioWEB, cleanErr := utils.Prettify(audioWEB)
-			if cleanErr != nil {
-				fmt.Println(cleanErr)
-			} else {
-				fmt.Println(cleanAudioWEB)
-			}
-		}
+		printAndPrettyPrintJsonString(audioWEB, audioWEBErr)
+
+		fmt.Println("Test `GetBibleBooks`")
 		kjvBooks, kjvBooksErr := client.GetBibleBooks(apiKey, kjvBibleId, params.BibleBooksParams{})
-		if kjvBooksErr != nil {
-			fmt.Println(kjvBooksErr)
+		printAndPrettyPrintJsonString(kjvBooks, kjvBooksErr)
+	}
+}
+
+func printAndPrettyPrintJsonString(json string, err error) {
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(json)
+		cleanJson, cleanErr := utils.Prettify(json)
+		if cleanErr != nil {
+			fmt.Println(cleanErr)
 		} else {
-			fmt.Println(kjvBooks)
-			cleanKjvBooks, cleanErr := utils.Prettify(kjvBooks)
-			if cleanErr != nil {
-				fmt.Println(cleanErr)
-			} else {
-				fmt.Println(cleanKjvBooks)
-			}
+			fmt.Println(cleanJson)
 		}
 	}
 }
