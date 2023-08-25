@@ -17,7 +17,7 @@ const (
 	RequestTimeout = 5 * time.Second
 )
 
-func RetrieveRequestTimeout() time.Duration {
+func GetRequestTimeout() time.Duration {
 	fromEnv := os.Getenv("SCRIPTURE_API_BIBLE_REQUEST_TIMEOUT")
 	timeout, timeoutErr := time.ParseDuration(fromEnv)
 	if timeoutErr != nil {
@@ -27,7 +27,7 @@ func RetrieveRequestTimeout() time.Duration {
 	}
 }
 
-func RetrieveApiKey() (string, error) {
+func GetApiKey() (string, error) {
 	apiKey := os.Getenv("SCRIPTURE_API_BIBLE_KEY")
 	if apiKey == "" {
 		return "", fmt.Errorf("Please set environment variable SCRIPTURE_API_BIBLE_KEY \n" +

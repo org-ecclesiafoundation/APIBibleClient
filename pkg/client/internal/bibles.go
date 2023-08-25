@@ -7,23 +7,23 @@ import (
 	"net/url"
 )
 
-func RetrieveBibles(apiKey string, params *params.BiblesParams) (string, error) {
+func GetBibles(apiKey string, params *params.BiblesParams) (string, error) {
 	header := produceHttpHeader(apiKey)
 	apiUrl := produceBiblesApiUrl(params)
 	request := produceHttpRequest(apiUrl, header)
 	httpClient := &http.Client{
-		Timeout: RetrieveRequestTimeout(),
+		Timeout: GetRequestTimeout(),
 	}
 	response, getRequestErr := httpClient.Do(&request)
 	return handleHttpResponse(response, getRequestErr)
 }
 
-func RetrieveBibleById(apiKey string, bibleId string) (string, error) {
+func GetBibleById(apiKey string, bibleId string) (string, error) {
 	header := produceHttpHeader(apiKey)
 	apiUrl := produceBibleApiUrl(bibleId)
 	request := produceHttpRequest(apiUrl, header)
 	httpClient := &http.Client{
-		Timeout: RetrieveRequestTimeout(),
+		Timeout: GetRequestTimeout(),
 	}
 	response, getRequestErr := httpClient.Do(&request)
 	return handleHttpResponse(response, getRequestErr)
