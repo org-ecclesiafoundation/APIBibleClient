@@ -2,42 +2,48 @@ package internal
 
 import (
 	"ecclesiafoundation.org/APIBibleClient/pkg/client/params"
-	"io"
+	"fmt"
 	"net/http"
 	"net/url"
 )
 
-func RetrieveBibles(apiKey string, params params.BiblesParams) (string, error) {
-	header := http.Header{
-		"Accept":  {"application/json"},
-		"api-key": {apiKey},
-	}
-	apiUrl := &url.URL{
-		Scheme:   "https",
-		Host:     ApiURL,
-		Path:     produceApiPath("/bibles"),
-		RawQuery: params.ProduceQueryParameters().Encode(),
-	}
-	request := http.Request{
-		Method: "GET",
-		URL:    apiUrl,
-		Header: header,
-	}
+func RetrieveBibles(apiKey string, params *params.BiblesParams) (string, error) {
+	header := produceHttpHeader(apiKey)
+	apiUrl := produceBiblesApiUrl(params)
+	request := produceHttpRequest(apiUrl, header)
 	httpClient := &http.Client{
 		Timeout: RetrieveRequestTimeout(),
 	}
 	response, getRequestErr := httpClient.Do(&request)
-	if getRequestErr != nil {
-		return "", getRequestErr
-	} else {
-		defer func(Body io.ReadCloser) {
-			_ = Body.Close()
-		}(response.Body)
-		body, bodyReadErr := io.ReadAll(response.Body)
-		if bodyReadErr != nil {
-			return "", bodyReadErr
-		} else {
-			return CleanJson(string(body))
-		}
+	return handleHttpResponse(response, getRequestErr)
+}
+
+func RetrieveBibleById(apiKey string, bibleId string) (string, error) {
+	header := produceHttpHeader(apiKey)
+	apiUrl := produceBibleApiUrl(bibleId)
+	request := produceHttpRequest(apiUrl, header)
+	httpClient := &http.Client{
+		Timeout: RetrieveRequestTimeout(),
+	}
+	response, getRequestErr := httpClient.Do(&request)
+	return handleHttpResponse(response, getRequestErr)
+}
+
+func produceBiblesApiUrl(params *params.BiblesParams) *url.URL {
+	path := "/bibles"
+	return &url.URL{
+		Scheme:   "https",
+		Host:     ApiURL,
+		Path:     produceApiPath(path),
+		RawQuery: params.ProduceQueryParameters().Encode(),
+	}
+}
+
+func produceBibleApiUrl(bibleId string) *url.URL {
+	path := fmt.Sprintf("/bibles/%s", bibleId)
+	return &url.URL{
+		Scheme: "https",
+		Host:   ApiURL,
+		Path:   produceApiPath(path),
 	}
 }

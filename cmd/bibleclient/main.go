@@ -3,6 +3,7 @@ package main
 import (
 	"ecclesiafoundation.org/APIBibleClient/pkg/client"
 	"ecclesiafoundation.org/APIBibleClient/pkg/client/params"
+	"ecclesiafoundation.org/APIBibleClient/pkg/utils"
 	"fmt"
 	"os"
 )
@@ -21,11 +22,23 @@ func main() {
 			fmt.Println(biblesErr)
 		} else {
 			fmt.Println(bibles)
-			cleanBibles, cleanErr := client.Prettify(bibles)
+			cleanBibles, cleanErr := utils.Prettify(bibles)
 			if cleanErr != nil {
 				fmt.Println(cleanErr)
 			} else {
 				fmt.Println(cleanBibles)
+			}
+		}
+		kjv, kjvErr := client.RetrieveBibleById(apiKey, kjvBibleId)
+		if kjvErr != nil {
+			fmt.Println(kjvErr)
+		} else {
+			fmt.Println(kjv)
+			cleanKjv, cleanErr := utils.Prettify(kjv)
+			if cleanErr != nil {
+				fmt.Println(cleanErr)
+			} else {
+				fmt.Println(cleanKjv)
 			}
 		}
 	}

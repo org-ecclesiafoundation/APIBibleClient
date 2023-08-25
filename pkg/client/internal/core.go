@@ -3,6 +3,9 @@ package internal
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"net/http"
+	"net/url"
 	"os"
 	"path"
 	"time"
@@ -33,32 +36,38 @@ func RetrieveApiKey() (string, error) {
 	return apiKey, nil
 }
 
+func produceHttpHeader(apiKey string) http.Header {
+	return http.Header{
+		"Accept":  {"application/json"},
+		"api-key": {apiKey},
+	}
+}
+
 func produceApiPath(endPoint string) string {
 	return path.Join("/", ApiVersion, endPoint)
 }
 
-type BiblesString string
-
-func (biblesString *BiblesString) Prettify() (string, error) {
-	prettyJson, prettifyErr := PrettifyJson(string(*biblesString))
-	if prettifyErr != nil {
-		return "", prettifyErr
-	} else {
-		return prettyJson, nil
+func produceHttpRequest(apiUrl *url.URL, header http.Header) http.Request {
+	return http.Request{
+		Method: "GET",
+		URL:    apiUrl,
+		Header: header,
 	}
 }
 
-func PrettifyJson(body string) (string, error) {
-	var mapForJson map[string]interface{}
-	unmarshalErr := json.Unmarshal([]byte(body), &mapForJson)
-	if unmarshalErr != nil {
-		return "", unmarshalErr
+func handleHttpResponse(response *http.Response, err error) (string, error) {
+	if err != nil {
+		return "", err
 	} else {
-		prettyBody, prettifyErr := json.MarshalIndent(mapForJson, "", "  ")
-		if prettifyErr != nil {
-			return "", prettifyErr
+		defer func(Body io.ReadCloser) {
+			_ = Body.Close()
+		}(response.Body)
+		body, bodyReadErr := io.ReadAll(response.Body)
+		if bodyReadErr != nil {
+			return "", bodyReadErr
+		} else {
+			return CleanJson(string(body))
 		}
-		return string(prettyBody), nil
 	}
 }
 
