@@ -16,7 +16,7 @@ func main() {
 	bookOfGenesisId := "GEN"
 	bookOfJohnId := "JHN"
 	genesisChapter1Id := "GEN.1"
-
+	johnChapter1Id := "JHN.1"
 	apiKey, apiKeyErr := utils.GetApiKey()
 	if apiKeyErr != nil {
 		fmt.Println(apiKeyErr)
@@ -60,6 +60,14 @@ func main() {
 		fmt.Println("Test `GetBibleChapterById`")
 		bibleChapter, bibleChapterErr := client.GetBibleChapterById(apiKey, kjvBibleId, genesisChapter1Id, &params.BibleChapterParams{})
 		printAndPrettyPrintJsonString(bibleChapter, bibleChapterErr)
+
+		fmt.Println("Test `GetAudioBibleChapters`")
+		audioBibleChapters, audioBibleChaptersErr := client.GetAudioBibleChapters(apiKey, webAudioBibleId, bookOfJohnId)
+		printAndPrettyPrintJsonString(audioBibleChapters, audioBibleChaptersErr)
+
+		fmt.Println("Test `GetAudioBibleChapterById`")
+		audioBibleChapter, audioBibleChapterErr := client.GetAudioBibleChapterById(apiKey, webAudioBibleId, johnChapter1Id)
+		printAndPrettyPrintJsonString(audioBibleChapter, audioBibleChapterErr)
 	}
 }
 
