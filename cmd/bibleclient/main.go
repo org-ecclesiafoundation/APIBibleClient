@@ -13,9 +13,7 @@ func main() {
 	kjvBibleId := "de4e12af7f28f599-02"
 	fmt.Printf("KJV Bible ID: %s\n", kjvBibleId)
 	webAudioBibleId := "105a06b6146d11e7-01"
-	bookOfGenesisId := "GEN"
 	bookOfJohnId := "JHN"
-	genesisChapter1Id := "GEN.1"
 	johnChapter1Id := "JHN.1"
 	secondTimPassage := "2TI.3.16-2TI.3.17"
 	john3Verse16 := "JHN.3.16"
@@ -45,7 +43,7 @@ func main() {
 		printAndPrettyPrintJsonString(kjvBooks, kjvBooksErr)
 
 		fmt.Println("Test `GetBibleBookById`")
-		kjvBook, kjvBookErr := client.GetBibleBookById(apiKey, kjvBibleId, bookOfGenesisId, &params.BibleBookParams{})
+		kjvBook, kjvBookErr := client.GetBibleBookById(apiKey, kjvBibleId, bookOfJohnId, &params.BibleBookParams{})
 		printAndPrettyPrintJsonString(kjvBook, kjvBookErr)
 
 		fmt.Println("Test `GetAudioBibleBooks`")
@@ -57,11 +55,11 @@ func main() {
 		printAndPrettyPrintJsonString(audioBibleBook, audioBibleBookErr)
 
 		fmt.Println("Test `GetBibleChapters`")
-		bibleChapters, bibleChaptersErr := client.GetBibleChapters(apiKey, kjvBibleId, bookOfGenesisId)
+		bibleChapters, bibleChaptersErr := client.GetBibleChapters(apiKey, kjvBibleId, bookOfJohnId)
 		printAndPrettyPrintJsonString(bibleChapters, bibleChaptersErr)
 
 		fmt.Println("Test `GetBibleChapterById`")
-		bibleChapter, bibleChapterErr := client.GetBibleChapterById(apiKey, kjvBibleId, genesisChapter1Id, &params.BibleChapterParams{})
+		bibleChapter, bibleChapterErr := client.GetBibleChapterById(apiKey, kjvBibleId, johnChapter1Id, &params.BibleChapterParams{})
 		printAndPrettyPrintJsonString(bibleChapter, bibleChapterErr)
 
 		fmt.Println("Test `GetAudioBibleChapters`")
@@ -74,11 +72,11 @@ func main() {
 
 		// NOTE: There are currently not any sections available through the API, so querying for them will return a "Not Found" error.
 		fmt.Println("Test `GetBibleBookSections`")
-		bibleBookSections, bibleBookSectionsErr := client.GetBibleBookSections(apiKey, kjvBibleId, "JHN")
+		bibleBookSections, bibleBookSectionsErr := client.GetBibleBookSections(apiKey, kjvBibleId, bookOfJohnId)
 		printAndPrettyPrintJsonString(bibleBookSections, bibleBookSectionsErr)
 
 		fmt.Println("Test `GetBibleChapterSections`")
-		bibleChapterSections, bibleChapterSectionsErr := client.GetBibleChapterSections(apiKey, kjvBibleId, "COL.1")
+		bibleChapterSections, bibleChapterSectionsErr := client.GetBibleChapterSections(apiKey, kjvBibleId, johnChapter1Id)
 		printAndPrettyPrintJsonString(bibleChapterSections, bibleChapterSectionsErr)
 
 		// fmt.Println("Test `GetBibleSectionById`")
@@ -90,12 +88,16 @@ func main() {
 		printAndPrettyPrintJsonString(biblePassage, biblePassageErr)
 
 		fmt.Println("Test `GetBibleChapterVerses`")
-		bibleVerses, bibleVersesErr := client.GetBibleChapterVerses(apiKey, kjvBibleId, genesisChapter1Id)
+		bibleVerses, bibleVersesErr := client.GetBibleChapterVerses(apiKey, kjvBibleId, johnChapter1Id)
 		printAndPrettyPrintJsonString(bibleVerses, bibleVersesErr)
 
 		fmt.Println("Test `GetBibleVerseById`")
 		bibleVerse, bibleVerseErr := client.GetBibleVerseById(apiKey, kjvBibleId, john3Verse16, &params.BibleVerseParams{})
 		printAndPrettyPrintJsonString(bibleVerse, bibleVerseErr)
+
+		fmt.Println("Test `GetBibleSearchResults`")
+		bibleSearch, bibleSearchErr := client.GetBibleSearchResults(apiKey, kjvBibleId, &params.BibleSearchParams{Query: "Love"})
+		printAndPrettyPrintJsonString(bibleSearch, bibleSearchErr)
 	}
 }
 

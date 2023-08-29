@@ -112,3 +112,9 @@ func GetBibleChapterVerses(apiKey string, bibleId string, chapterId string) (str
 func GetBibleVerseById(apiKey string, bibleId string, verseId string, params *params.BibleVerseParams) (string, error) {
 	return internal.GetBibleVerseById(apiKey, bibleId, verseId, params)
 }
+
+// The GetBibleSearchResults function calls the
+// `/bibles/{bibleId}/search` end point of the API
+func GetBibleSearchResults(apiKey string, bibleId string, params *params.BibleSearchParams) (string, error) {
+	return internal.GetBibleSearchResults(apiKey, bibleId, params)
+}
