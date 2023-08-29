@@ -15,8 +15,8 @@ func main() {
 	webAudioBibleId := "105a06b6146d11e7-01"
 	bookOfJohnId := "JHN"
 	johnChapter1Id := "JHN.1"
-	secondTimPassage := "2TI.3.16-2TI.3.17"
 	john3Verse16 := "JHN.3.16"
+	secondTimPassage := "2TI.3.16-2TI.3.17"
 	apiKey, apiKeyErr := utils.GetApiKey()
 
 	if apiKeyErr != nil {
