@@ -23,11 +23,11 @@ Go Language API Bible Client for the https://scripture.api.bible site
 #### GET /v1/bibles/{bibleId}/sections/{sectionId}
 ### Passages (Fetch a Passage for a Bible)
 #### GET /v1/bibles/{bibleId}/passages/{passageId}
-## TODO
-### Figure out the licensing and annotate files accordingly (Linux?)
-### Keep up on the scripture.api.bible live documentation
 ### Verses (Fetch Verses for a Bible)
 #### GET /v1/bibles/{bibleId}/chapters/{chapterId}/verses
 #### GET /v1/bibles/{bibleId}/verses/{verseId}
+## TODO
+### Figure out the licensing and annotate files accordingly (Linux?)
+### Keep up on the scripture.api.bible live documentation
 ### Search (Search by keyword or reference)
 #### GET /v1/bibles/{bibleId}/search
