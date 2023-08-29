@@ -17,7 +17,9 @@ func main() {
 	bookOfJohnId := "JHN"
 	genesisChapter1Id := "GEN.1"
 	johnChapter1Id := "JHN.1"
+	secondTimPassage := "2TI.3.16-2TI.3.17"
 	apiKey, apiKeyErr := utils.GetApiKey()
+
 	if apiKeyErr != nil {
 		fmt.Println(apiKeyErr)
 	} else {
@@ -81,6 +83,10 @@ func main() {
 		// fmt.Println("Test `GetBibleSectionById`")
 		// bibleSection, bibleSectionErr := client.GetBibleSectionById(apiKey, kjvBibleId, {SECTION_ID}, &params.BibleChapterParams{})
 		// printAndPrettyPrintJsonString(bibleSection, bibleSectionErr)
+
+		fmt.Println("Test `GetBiblePassage`")
+		biblePassage, biblePassageErr := client.GetBiblePassage(apiKey, kjvBibleId, secondTimPassage, &params.BiblePassageParams{})
+		printAndPrettyPrintJsonString(biblePassage, biblePassageErr)
 	}
 }
 

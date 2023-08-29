@@ -94,3 +94,9 @@ func GetBibleChapterSections(apiKey string, bibleId string, chapterId string) (s
 func GetBibleSectionById(apiKey string, bibleId string, sectionId string, params *params.BibleSectionParams) (string, error) {
 	return internal.GetBibleSectionById(apiKey, bibleId, sectionId, params)
 }
+
+// The GetBiblePassage function calls the
+// `/bibles/{bibleId}/passages/{passageId}` end point of the API
+func GetBiblePassage(apiKey string, bibleId string, passageId string, params *params.BiblePassageParams) (string, error) {
+	return internal.GetBiblePassage(apiKey, bibleId, passageId, params)
+}
