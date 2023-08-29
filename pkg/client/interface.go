@@ -52,3 +52,15 @@ func GetAudioBibleBooks(apiKey string, audioBibleId string, params *params.Audio
 func GetAudioBibleBookById(apiKey string, audioBibleId string, bookId string, params *params.AudioBibleBookParams) (string, error) {
 	return internal.GetAudioBibleBookById(apiKey, audioBibleId, bookId, params)
 }
+
+// The GetBibleChapters function calls the
+// `/bibles/{bibleId}/books/{bookId}/chapters` end point of the API
+func GetBibleChapters(apiKey string, bibleId string, bookId string) (string, error) {
+	return internal.GetBibleChapters(apiKey, bibleId, bookId)
+}
+
+// The GetBibleChapterById function calls the
+// `/bibles/{bibleId}/chapters/{chapterId}` end point of the API
+func GetBibleChapterById(apiKey string, bibleId string, chapterId string, params *params.BibleChapterParams) (string, error) {
+	return internal.GetBibleChapterById(apiKey, bibleId, chapterId, params)
+}
