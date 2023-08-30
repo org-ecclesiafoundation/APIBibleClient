@@ -22,7 +22,6 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
 ## Functionality
 ### Bibles (Fetch Bibles and metadata)
 #### GET /v1/bibles
@@ -52,7 +51,12 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 #### GET /v1/bibles/{bibleId}/search
 ## TODO
 Prior to releasing v1.0 the following needs to be done:
+### Document Pain Points
 - Document which API calls are broken on their side (put it in the README and in the comments above the functions that use them)
+### Test & Document Functionality
+- Document in the README code samples for each of the functionality and the responses one might expect.
 - Take the stuff we put into the main file, simplify them to make the responses shorter and turn them into test cases to be run at the appropriate (Unit xor API Interface) level.
+NOTE: The aforementioned two items might wind up executing exactly the same library code. Might this be preferable?
+### Maintenance
 - Put into the TODO section a list of the things we will need to check up on and act accordingly. At this point, it seems that is constituted by the sections API.
 - Keep up on the scripture.api.bible live documentation
