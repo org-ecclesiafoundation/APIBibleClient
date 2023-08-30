@@ -35,5 +35,8 @@ Go Language API Bible Client for the https://scripture.api.bible site
 ### Search (Search by keyword or reference)
 #### GET /v1/bibles/{bibleId}/search
 ## TODO
-### Figure out the licensing and annotate files accordingly (Linux?)
-### Keep up on the scripture.api.bible live documentation
+Prior to releasing v1.0 the following needs to be done:
+- Document which API calls are broken on their side (put it in the README and in the comments above the functions that use them)
+- Take the stuff we put into the main file, simplify them to make the responses shorter and turn them into test cases to be run at the appropriate (Unit xor API Interface) level.
+- Put into the TODO section a list of the things we will need to check up on and act accordingly. At this point, it seems that is constituted by the sections API.
+- Keep up on the scripture.api.bible live documentation
