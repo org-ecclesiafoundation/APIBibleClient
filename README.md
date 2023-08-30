@@ -60,3 +60,6 @@ NOTE: The aforementioned two items might wind up executing exactly the same libr
 ### Maintenance
 - Put into the TODO section a list of the things we will need to check up on and act accordingly. At this point, it seems that is constituted by the sections API.
 - Keep up on the scripture.api.bible live documentation
+### One-Time After Release
+- Ensure that the appropriate metadata exists on ecclesiafoundation.org in order that the go package might be indexed.
+- Do any other work associated with the indexing of the go package.
