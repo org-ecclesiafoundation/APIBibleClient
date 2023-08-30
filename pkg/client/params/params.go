@@ -2,6 +2,7 @@ package params
 
 import (
 	"net/url"
+	"strconv"
 	"strings"
 )
 
@@ -74,16 +75,16 @@ func (params *AudioBiblesParams) ProduceQueryParameters() url.Values {
 // The BibleBooksParams struct contains all optional parameters
 // for the API call to the `bibles/{bibleId}/books` end point
 type BibleBooksParams struct {
-	includeChapters            bool
-	includeChaptersAndSections bool
+	IncludeChapters            bool
+	IncludeChaptersAndSections bool
 }
 
 func (params *BibleBooksParams) ProduceQueryParameters() url.Values {
 	values := url.Values{}
-	if params.includeChapters {
+	if params.IncludeChapters {
 		values.Add("include-chapters", "true")
 	}
-	if params.includeChaptersAndSections {
+	if params.IncludeChaptersAndSections {
 		values.Add("include-chapters", "true")
 	}
 	return values
@@ -92,12 +93,12 @@ func (params *BibleBooksParams) ProduceQueryParameters() url.Values {
 // The BibleBookParams struct contains all optional parameters
 // for the API call to the `bibles/{bibleId}/books/{bookId}` end point
 type BibleBookParams struct {
-	includeChapters bool
+	IncludeChapters bool
 }
 
 func (params *BibleBookParams) ProduceQueryParameters() url.Values {
 	values := url.Values{}
-	if params.includeChapters {
+	if params.IncludeChapters {
 		values.Add("include-chapters", "true")
 	}
 	return values
@@ -106,16 +107,16 @@ func (params *BibleBookParams) ProduceQueryParameters() url.Values {
 // The BibleBooksParams struct contains all optional parameters
 // for the API call to the `bibles/{audioBibleId}/books` end point
 type AudioBibleBooksParams struct {
-	includeChapters            bool
-	includeChaptersAndSections bool
+	IncludeChapters            bool
+	IncludeChaptersAndSections bool
 }
 
 func (params *AudioBibleBooksParams) ProduceQueryParameters() url.Values {
 	values := url.Values{}
-	if params.includeChapters {
+	if params.IncludeChapters {
 		values.Add("include-chapters", "true")
 	}
-	if params.includeChaptersAndSections {
+	if params.IncludeChaptersAndSections {
 		values.Add("include-chapters", "true")
 	}
 	return values
@@ -124,13 +125,213 @@ func (params *AudioBibleBooksParams) ProduceQueryParameters() url.Values {
 // The AudioBibleBookParams struct contains all optional parameters
 // for the API call to the `audio-bibles/{audioBibleId}/books/{bookId}` end point
 type AudioBibleBookParams struct {
-	includeChapters bool
+	IncludeChapters bool
 }
 
 func (params *AudioBibleBookParams) ProduceQueryParameters() url.Values {
 	values := url.Values{}
-	if params.includeChapters {
+	if params.IncludeChapters {
 		values.Add("include-chapters", "true")
 	}
+	return values
+}
+
+// The BibleChapterParams struct contains all optional parameters
+// for the API call to the `bibles/{bibleId}/chapters/{chapterId}` end point
+type BibleChapterParams struct {
+	ContentType           string
+	IncludeNotes          bool
+	IncludeTitles         bool
+	IncludeChapterNumbers bool
+	IncludeVerseNumbers   bool
+	IncludeVerseSpans     bool
+	Parallels             []string
+}
+
+func (params *BibleChapterParams) ProduceQueryParameters() url.Values {
+	values := url.Values{}
+
+	if params.ContentType != "" {
+		values.Add("content-type", params.ContentType)
+	}
+	if params.IncludeNotes {
+		values.Add("include-notes", "true")
+	}
+	if params.IncludeTitles {
+		values.Add("include-titles", "true")
+	}
+	if params.IncludeChapterNumbers {
+		values.Add("include-chapter-numbers", "true")
+	}
+	if params.IncludeVerseNumbers {
+		values.Add("include-verse-numbers", "true")
+	}
+	if params.IncludeVerseSpans {
+		values.Add("include-verse-spans", "true")
+	}
+	if params.Parallels != nil {
+		values.Add("parallels", strings.Join(params.Parallels, ","))
+	}
+	return values
+}
+
+// The BibleSectionParams struct contains all optional parameters
+// for the API call to the `bibles/{bibleId}/sections/{sectionId}` end point
+type BibleSectionParams struct {
+	ContentType           string
+	IncludeNotes          bool
+	IncludeTitles         bool
+	IncludeChapterNumbers bool
+	IncludeVerseNumbers   bool
+	IncludeVerseSpans     bool
+	Parallels             []string
+}
+
+func (params *BibleSectionParams) ProduceQueryParameters() url.Values {
+	values := url.Values{}
+
+	if params.ContentType != "" {
+		values.Add("content-type", params.ContentType)
+	}
+	if params.IncludeNotes {
+		values.Add("include-notes", "true")
+	}
+	if params.IncludeTitles {
+		values.Add("include-titles", "true")
+	}
+	if params.IncludeChapterNumbers {
+		values.Add("include-chapter-numbers", "true")
+	}
+	if params.IncludeVerseNumbers {
+		values.Add("include-verse-numbers", "true")
+	}
+	if params.IncludeVerseSpans {
+		values.Add("include-verse-spans", "true")
+	}
+	if params.Parallels != nil {
+		values.Add("parallels", strings.Join(params.Parallels, ","))
+	}
+	return values
+}
+
+// The BiblePassageParams struct contains all optional parameters
+// for the API call to the `bibles/{bibleId}/passages/{passageId}` end point
+type BiblePassageParams struct {
+	ContentType           string
+	IncludeNotes          bool
+	IncludeTitles         bool
+	IncludeChapterNumbers bool
+	IncludeVerseNumbers   bool
+	IncludeVerseSpans     bool
+	Parallels             []string
+	UseOrgId              bool
+}
+
+func (params *BiblePassageParams) ProduceQueryParameters() url.Values {
+	values := url.Values{}
+
+	if params.ContentType != "" {
+		values.Add("content-type", params.ContentType)
+	}
+	if params.IncludeNotes {
+		values.Add("include-notes", "true")
+	}
+	if params.IncludeTitles {
+		values.Add("include-titles", "true")
+	}
+	if params.IncludeChapterNumbers {
+		values.Add("include-chapter-numbers", "true")
+	}
+	if params.IncludeVerseNumbers {
+		values.Add("include-verse-numbers", "true")
+	}
+	if params.IncludeVerseSpans {
+		values.Add("include-verse-spans", "true")
+	}
+	if params.Parallels != nil {
+		values.Add("parallels", strings.Join(params.Parallels, ","))
+	}
+	if params.UseOrgId {
+		values.Add("use-org-id", "true")
+	}
+	return values
+}
+
+// The BibleVerseParams struct contains all optional parameters
+// for the API call to the `bibles/{bibleId}/verses/{verseId}` end point
+type BibleVerseParams struct {
+	ContentType           string
+	IncludeNotes          bool
+	IncludeTitles         bool
+	IncludeChapterNumbers bool
+	IncludeVerseNumbers   bool
+	IncludeVerseSpans     bool
+	Parallels             []string
+	UseOrgId              bool
+}
+
+func (params *BibleVerseParams) ProduceQueryParameters() url.Values {
+	values := url.Values{}
+
+	if params.ContentType != "" {
+		values.Add("content-type", params.ContentType)
+	}
+	if params.IncludeNotes {
+		values.Add("include-notes", "true")
+	}
+	if params.IncludeTitles {
+		values.Add("include-titles", "true")
+	}
+	if params.IncludeChapterNumbers {
+		values.Add("include-chapter-numbers", "true")
+	}
+	if params.IncludeVerseNumbers {
+		values.Add("include-verse-numbers", "true")
+	}
+	if params.IncludeVerseSpans {
+		values.Add("include-verse-spans", "true")
+	}
+	if params.Parallels != nil {
+		values.Add("parallels", strings.Join(params.Parallels, ","))
+	}
+	if params.UseOrgId {
+		values.Add("use-org-id", "true")
+	}
+	return values
+}
+
+// The BibleSearchParams struct contains all optional parameters
+// for the API call to the `bibles/{bibleId}/search` end point
+type BibleSearchParams struct {
+	Query     string
+	Limit     int
+	Offset    int
+	Sort      string
+	Range     string
+	Fuzziness string
+}
+
+func (params *BibleSearchParams) ProduceQueryParameters() url.Values {
+	values := url.Values{}
+
+	if params.Query != "" {
+		values.Add("query", params.Query)
+	}
+	if params.Limit != 0 {
+		values.Add("limit", strconv.Itoa(params.Limit))
+	}
+	if params.Offset != 0 {
+		values.Add("offset", strconv.Itoa(params.Offset))
+	}
+	if params.Sort != "" {
+		values.Add("sort", params.Sort)
+	}
+	if params.Range != "" {
+		values.Add("range", params.Range)
+	}
+	if params.Fuzziness != "" {
+		values.Add("fuzziness", params.Fuzziness)
+	}
+
 	return values
 }
