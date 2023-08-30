@@ -1,4 +1,5 @@
 # APIBibleClient
+
 Go Language API Bible Client for the https://scripture.api.bible site
 
 > Copyright (c) Ecclesia Foundation
