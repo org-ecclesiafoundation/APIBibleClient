@@ -17,7 +17,9 @@ func ExampleGetBibles() {
 	apiKey, apiKeyErr := utils.GetApiKey()
 	var output string
 	if apiKeyErr != nil {
-		failIfNoApiKeyEnvVar()
+		fmt.Printf("Failed to get API key.\n"+
+			"Please set the environment variable %s to the appropriate value",
+			API_KEY_ENV_VAR)
 	} else {
 		// Here is an example with all parameters used.
 		// You may use any subset of these parameters,
@@ -31,13 +33,11 @@ func ExampleGetBibles() {
 		}
 		bibles, biblesErr := GetBibles(apiKey, &biblesParams)
 		if biblesErr != nil {
-			fmt.Errorf("failed to retrieve bibles specified by %v\n", biblesParams)
-			return
+			fmt.Println("Do error handling for failing to get bibles here")
 		} else {
 			prettyBibles, prettifyErr := utils.Prettify(bibles)
 			if prettifyErr != nil {
-				fmt.Errorf("failed to prettify bibles JSON")
-				return
+				fmt.Println("Do error handling for failing to print bibles JSON here")
 			} else {
 				output = prettyBibles
 			}
@@ -79,10 +79,4 @@ func ExampleGetBibles() {
 	//     }
 	//   ]
 	// }
-}
-
-func failIfNoApiKeyEnvVar() {
-	fmt.Errorf("Failed to get API key.\n"+
-		"Please set the environment variable %s to the appropriate value",
-		API_KEY_ENV_VAR)
 }
