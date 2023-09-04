@@ -21,9 +21,11 @@ func ExampleGetBibles() {
 			"Please set the environment variable %s to the appropriate value",
 			API_KEY_ENV_VAR)
 	} else {
-		// Here is an example with all parameters used.
+		// Here is an example of an API call with all the possible
+		// parameters used.
 		// You may use any subset of these parameters,
 		// including passing in a blank params.BibleParams{} struct
+		// to the call to GetBibles.
 		biblesParams := params.BiblesParams{
 			Language:           "eng",
 			Abbreviation:       "kjv",
