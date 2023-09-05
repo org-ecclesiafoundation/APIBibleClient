@@ -7,19 +7,14 @@ import (
 	"testing"
 )
 
-const (
-	API_KEY_ENV_VAR = "SCRIPTURE_API_BIBLE_KEY"
-)
-
 func TestStub(t *testing.T) {}
 
 func ExampleGetBibles() {
 	apiKey, apiKeyErr := utils.GetApiKey()
 	var output string
 	if apiKeyErr != nil {
-		fmt.Printf("Failed to get API key.\n"+
-			"Please set the environment variable %s to the appropriate value",
-			API_KEY_ENV_VAR)
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
 		// Here is an example of all the possible API
 		// parameters used.
@@ -89,9 +84,8 @@ func ExampleGetBibleById() {
 	kjvBibleId := "de4e12af7f28f599-02"
 	var output string
 	if apiKeyErr != nil {
-		fmt.Printf("Failed to get API key.\n"+
-			"Please set the environment variable %s to the appropriate value",
-			API_KEY_ENV_VAR)
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
 		// Here is an example of an API call
 		bible, bibleErr := GetBibleById(apiKey, kjvBibleId)
@@ -147,9 +141,8 @@ func ExampleGetAudioBibles() {
 	apiKey, apiKeyErr := utils.GetApiKey()
 	var output string
 	if apiKeyErr != nil {
-		fmt.Printf("Failed to get API key.\n"+
-			"Please set the environment variable %s to the appropriate value",
-			API_KEY_ENV_VAR)
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
 		// Here is an example of all the possible API
 		// parameters used.
