@@ -81,13 +81,13 @@ func ExampleGetBibles() {
 
 func ExampleGetBibleById() {
 	apiKey, apiKeyErr := utils.GetApiKey()
-	kjvBibleId := "de4e12af7f28f599-02"
 	var output string
 	if apiKeyErr != nil {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
 		// Here is an example of an API call
+		kjvBibleId := "de4e12af7f28f599-02"
 		bible, bibleErr := GetBibleById(apiKey, kjvBibleId)
 		// Here is some boilerplate for handling errors and pretty-printing
 		if bibleErr != nil {
@@ -205,5 +205,62 @@ func ExampleGetAudioBibles() {
 	//       "updatedAt": "2022-01-07T18:49:57.000Z"
 	//     }
 	//   ]
+	// }
+}
+
+func ExampleGetAudioBibleById() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		// Here is an example of an API call
+		webAudioBibleId := "105a06b6146d11e7-01"
+		audioBible, audioBibleErr := GetAudioBibleById(apiKey, webAudioBibleId)
+		// Here is some boilerplate for handling errors and pretty-printing
+		if audioBibleErr != nil {
+			fmt.Println("Do error handling for failing to get audio audioBible here")
+		} else {
+			prettyAudioBible, prettifyErr := utils.Prettify(audioBible)
+			if prettifyErr != nil {
+				fmt.Println("Do error handling for failing to print audio audioBible JSON here")
+			} else {
+				output = prettyAudioBible
+			}
+		}
+	}
+	fmt.Println(output)
+	// Output:
+	// {
+	//   "data": {
+	//     "abbreviation": "WEB13",
+	//     "abbreviationLocal": "WEB13",
+	//     "copyright": "℗ 2013 Hosanna",
+	//     "countries": [
+	//       {
+	//         "id": "US",
+	//         "name": "United States",
+	//         "nameLocal": "United States"
+	//       }
+	//     ],
+	//     "dblId": "105a06b6146d11e7",
+	//     "description": null,
+	//     "descriptionLocal": null,
+	//     "id": "105a06b6146d11e7-01",
+	//     "info": null,
+	//     "language": {
+	//       "id": "eng",
+	//       "name": "English",
+	//       "nameLocal": "English",
+	//       "script": "Latin",
+	//       "scriptDirection": "LTR"
+	//     },
+	//     "name": "English - World English Bible 2013 (Drama NT)",
+	//     "nameLocal": "English - World English Bible 2013 (Drama NT)",
+	//     "relatedDbl": "9879dbb7cfe39e4d",
+	//     "type": "audio",
+	//     "updatedAt": "2022-01-07T18:49:57.000Z"
+	//   }
 	// }
 }
