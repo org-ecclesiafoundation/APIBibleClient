@@ -19,7 +19,7 @@ func ExampleGetBibles() {
 		// Here is an example of all the possible API
 		// parameters used.
 		// You may use any subset of these parameters,
-		// including passing in a blank params.BibleParams{} struct
+		// including passing in a blank params.BibleParams{} struct ref
 		// to the call to GetBibles.
 		biblesParams := params.BiblesParams{
 			Language:           "eng",
@@ -147,7 +147,7 @@ func ExampleGetAudioBibles() {
 		// Here is an example of all the possible API
 		// parameters used.
 		// You may use any subset of these parameters,
-		// including passing in a blank params.AudioBiblesParams{} struct
+		// including passing in a blank params.AudioBiblesParams{} struct ref
 		// to the call to Foo.
 		worldEnglishBibleID := "9879dbb7cfe39e4d-01"
 		audioBiblesParams := params.AudioBiblesParams{
