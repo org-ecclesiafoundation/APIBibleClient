@@ -21,7 +21,7 @@ func ExampleGetBibles() {
 			"Please set the environment variable %s to the appropriate value",
 			API_KEY_ENV_VAR)
 	} else {
-		// Here is an example of an API call with all the possible
+		// Here is an example of all the possible API
 		// parameters used.
 		// You may use any subset of these parameters,
 		// including passing in a blank params.BibleParams{} struct
@@ -97,11 +97,11 @@ func ExampleGetBibleById() {
 		bible, bibleErr := GetBibleById(apiKey, kjvBibleId)
 		// Here is some boilerplate for handling errors and pretty-printing
 		if bibleErr != nil {
-			fmt.Println("Do error handling for failing to get bibles here")
+			fmt.Println("Do error handling for failing to get bible here")
 		} else {
 			prettyBible, prettifyErr := utils.Prettify(bible)
 			if prettifyErr != nil {
-				fmt.Println("Do error handling for failing to print bibles JSON here")
+				fmt.Println("Do error handling for failing to print bible JSON here")
 			} else {
 				output = prettyBible
 			}
@@ -140,5 +140,77 @@ func ExampleGetBibleById() {
 	//     "type": "text",
 	//     "updatedAt": "2023-05-03T09:23:59.000Z"
 	//   }
+	// }
+}
+
+func ExampleGetAudioBibles() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Printf("Failed to get API key.\n"+
+			"Please set the environment variable %s to the appropriate value",
+			API_KEY_ENV_VAR)
+	} else {
+		// Here is an example of all the possible API
+		// parameters used.
+		// You may use any subset of these parameters,
+		// including passing in a blank params.AudioBiblesParams{} struct
+		// to the call to Foo.
+		worldEnglishBibleID := "9879dbb7cfe39e4d-01"
+		audioBiblesParams := params.AudioBiblesParams{
+			Language:           "eng",
+			Abbreviation:       "WEB13",
+			Name:               "World English",
+			RelatedTextBibleId: worldEnglishBibleID,
+			IncludeFullDetails: true,
+		}
+		// Here is an example of an API call
+		audioBibles, audioBiblesErr := GetAudioBibles(apiKey, &audioBiblesParams)
+		// Here is some boilerplate for handling errors and pretty-printing
+		if audioBiblesErr != nil {
+			fmt.Println("Do error handling for failing to get audio bibles here")
+		} else {
+			prettyAudioBible, prettifyErr := utils.Prettify(audioBibles)
+			if prettifyErr != nil {
+				fmt.Println("Do error handling for failing to print audio bible JSON here")
+			} else {
+				output = prettyAudioBible
+			}
+		}
+	}
+	fmt.Println(output)
+	// Output:
+	// {
+	//   "data": [
+	//     {
+	//       "abbreviation": "WEB13",
+	//       "abbreviationLocal": "WEB13",
+	//       "copyright": "℗ 2013 Hosanna",
+	//       "countries": [
+	//         {
+	//           "id": "US",
+	//           "name": "United States",
+	//           "nameLocal": "United States"
+	//         }
+	//       ],
+	//       "dblId": "105a06b6146d11e7",
+	//       "description": null,
+	//       "descriptionLocal": null,
+	//       "id": "105a06b6146d11e7-01",
+	//       "info": null,
+	//       "language": {
+	//         "id": "eng",
+	//         "name": "English",
+	//         "nameLocal": "English",
+	//         "script": "Latin",
+	//         "scriptDirection": "LTR"
+	//       },
+	//       "name": "English - World English Bible 2013 (Drama NT)",
+	//       "nameLocal": "English - World English Bible 2013 (Drama NT)",
+	//       "relatedDbl": "9879dbb7cfe39e4d",
+	//       "type": "audio",
+	//       "updatedAt": "2022-01-07T18:49:57.000Z"
+	//     }
+	//   ]
 	// }
 }
