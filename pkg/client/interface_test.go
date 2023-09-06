@@ -765,3 +765,63 @@ func ExampleGetBibleBooks() {
 	//   ]
 	// }
 }
+
+func ExampleGetBibleBookById() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		// Here is an example of all the possible API
+		// parameters used.
+		// You may use any subset of these parameters,
+		// including passing in a blank params.BibleParams{} struct ref
+		// to the call to GetBibleBookById.
+		bibleBookParams := params.BibleBookParams{
+			IncludeChapters: true,
+		}
+		// Here is an example of an API call
+		kjvBibleId := "de4e12af7f28f599-02"
+		secondJohnId := "2JN"
+		bibleBook, bibleBookErr := GetBibleBookById(apiKey, kjvBibleId, secondJohnId, &bibleBookParams)
+		// Here is some boilerplate for handling errors and pretty-printing
+		if bibleBookErr != nil {
+			fmt.Println("Do error handling for failing to get bible book here")
+		} else {
+			prettyBibleBook, prettifyErr := utils.Prettify(bibleBook)
+			if prettifyErr != nil {
+				fmt.Println("Do error handling for failing to make pretty JSON here")
+			} else {
+				output = prettyBibleBook
+			}
+		}
+	}
+	fmt.Println(output)
+	// Output:
+	// {
+	//   "data": {
+	//     "abbreviation": "2Jn",
+	//     "bibleId": "de4e12af7f28f599-02",
+	//     "chapters": [
+	//       {
+	//         "bibleId": "de4e12af7f28f599-02",
+	//         "bookId": "2JN",
+	//         "id": "2JN.intro",
+	//         "number": "intro",
+	//         "position": 1226
+	//       },
+	//       {
+	//         "bibleId": "de4e12af7f28f599-02",
+	//         "bookId": "2JN",
+	//         "id": "2JN.1",
+	//         "number": "1",
+	//         "position": 1227
+	//       }
+	//     ],
+	//     "id": "2JN",
+	//     "name": "2 John",
+	//     "nameLong": "THE SECOND EPISTLE OF JOHN"
+	//   }
+	// }
+}
