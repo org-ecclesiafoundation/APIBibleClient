@@ -28,6 +28,7 @@ func ExampleGetBibles() {
 			Ids:                []string{"de4e12af7f28f599-01"},
 			IncludeFullDetails: true,
 		}
+		// Here is an example of an API call
 		bibles, biblesErr := GetBibles(apiKey, &biblesParams)
 		// Here is some boilerplate for handling errors and pretty-printing
 		if biblesErr != nil {
@@ -823,5 +824,233 @@ func ExampleGetBibleBookById() {
 	//     "name": "2 John",
 	//     "nameLong": "THE SECOND EPISTLE OF JOHN"
 	//   }
+	// }
+}
+
+func ExampleGetAudioBibleBooks() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		// Here is an example of all the possible API
+		// parameters used.
+		// You may use any subset of these parameters,
+		// including passing in a blank params.AudioBibleBooksParams{} struct ref
+		// to the call to GetBibleBookById.
+		audioBibleBooksParams := params.AudioBibleBooksParams{
+			IncludeChapters:            false,
+			IncludeChaptersAndSections: false,
+		}
+		// Here is an example of an API call
+		webAudioBibleId := "105a06b6146d11e7-01"
+		audioBibleBooks, audioBibleBooksErr := GetAudioBibleBooks(apiKey, webAudioBibleId, &audioBibleBooksParams)
+		// Here is some boilerplate for handling errors and pretty-printing
+		if audioBibleBooksErr != nil {
+			fmt.Println("Do error handling for failing to get audio bibles here")
+		} else {
+			prettyAudioBibleBooks, prettifyErr := utils.Prettify(audioBibleBooks)
+			if prettifyErr != nil {
+				fmt.Println("Do error handling for failing to make pretty JSON here")
+			} else {
+				output = prettyAudioBibleBooks
+			}
+		}
+	}
+	fmt.Println(output)
+	// Output:
+	// {
+	//   "data": [
+	//     {
+	//       "abbreviation": "1 Corinthians",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "1CO",
+	//       "name": "1 Corinthians",
+	//       "nameLong": "Paul’s First Letter to the Corinthians"
+	//     },
+	//     {
+	//       "abbreviation": "1 John",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "1JN",
+	//       "name": "1 John",
+	//       "nameLong": "John’s First Letter"
+	//     },
+	//     {
+	//       "abbreviation": "1 Peter",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "1PE",
+	//       "name": "1 Peter",
+	//       "nameLong": "Peter’s First Letter"
+	//     },
+	//     {
+	//       "abbreviation": "1 Thessalonians",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "1TH",
+	//       "name": "1 Thessalonians",
+	//       "nameLong": "Paul’s First Letter to the Thessalonians"
+	//     },
+	//     {
+	//       "abbreviation": "1 Timothy",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "1TI",
+	//       "name": "1 Timothy",
+	//       "nameLong": "Paul’s First Letter to Timothy"
+	//     },
+	//     {
+	//       "abbreviation": "2 Corinthians",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "2CO",
+	//       "name": "2 Corinthians",
+	//       "nameLong": "Paul’s Second Letter to the Corinthians"
+	//     },
+	//     {
+	//       "abbreviation": "2 John",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "2JN",
+	//       "name": "2 John",
+	//       "nameLong": "John’s Second Letter"
+	//     },
+	//     {
+	//       "abbreviation": "2 Peter",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "2PE",
+	//       "name": "2 Peter",
+	//       "nameLong": "Peter’s Second Letter"
+	//     },
+	//     {
+	//       "abbreviation": "2 Thessalonians",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "2TH",
+	//       "name": "2 Thessalonians",
+	//       "nameLong": "Paul’s Second Letter to the Thessalonians"
+	//     },
+	//     {
+	//       "abbreviation": "2 Timothy",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "2TI",
+	//       "name": "2 Timothy",
+	//       "nameLong": "Paul’s Second Letter to Timothy"
+	//     },
+	//     {
+	//       "abbreviation": "3 John",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "3JN",
+	//       "name": "3 John",
+	//       "nameLong": "John’s Third Letter"
+	//     },
+	//     {
+	//       "abbreviation": "Acts",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "ACT",
+	//       "name": "Acts",
+	//       "nameLong": "The Acts of the Apostles"
+	//     },
+	//     {
+	//       "abbreviation": "Colossians",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "COL",
+	//       "name": "Colossians",
+	//       "nameLong": "Paul’s Letter to the Colossians"
+	//     },
+	//     {
+	//       "abbreviation": "Ephesians",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "EPH",
+	//       "name": "Ephesians",
+	//       "nameLong": "Paul’s Letter to the Ephesians"
+	//     },
+	//     {
+	//       "abbreviation": "Galatians",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "GAL",
+	//       "name": "Galatians",
+	//       "nameLong": "Paul’s Letter to the Galatians"
+	//     },
+	//     {
+	//       "abbreviation": "Hebrews",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "HEB",
+	//       "name": "Hebrews",
+	//       "nameLong": "The Letter to the Hebrews"
+	//     },
+	//     {
+	//       "abbreviation": "James",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "JAS",
+	//       "name": "James",
+	//       "nameLong": "The Letter from James"
+	//     },
+	//     {
+	//       "abbreviation": "John",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "JHN",
+	//       "name": "John",
+	//       "nameLong": "The Good News According to John"
+	//     },
+	//     {
+	//       "abbreviation": "Jude",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "JUD",
+	//       "name": "Jude",
+	//       "nameLong": "The Letter from Jude"
+	//     },
+	//     {
+	//       "abbreviation": "Luke",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "LUK",
+	//       "name": "Luke",
+	//       "nameLong": "The Good News According to Luke"
+	//     },
+	//     {
+	//       "abbreviation": "Matthew",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "MAT",
+	//       "name": "Matthew",
+	//       "nameLong": "The Good News According to Matthew"
+	//     },
+	//     {
+	//       "abbreviation": "Mark",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "MRK",
+	//       "name": "Mark",
+	//       "nameLong": "The Good News According to Mark"
+	//     },
+	//     {
+	//       "abbreviation": "Philemon",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "PHM",
+	//       "name": "Philemon",
+	//       "nameLong": "Paul’s Letter to Philemon"
+	//     },
+	//     {
+	//       "abbreviation": "Philippians",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "PHP",
+	//       "name": "Philippians",
+	//       "nameLong": "Paul’s Letter to the Philippians"
+	//     },
+	//     {
+	//       "abbreviation": "Revelation",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "REV",
+	//       "name": "Revelation",
+	//       "nameLong": "The Revelation to John"
+	//     },
+	//     {
+	//       "abbreviation": "Romans",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "ROM",
+	//       "name": "Romans",
+	//       "nameLong": "Paul’s Letter to the Romans"
+	//     },
+	//     {
+	//       "abbreviation": "Titus",
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "id": "TIT",
+	//       "name": "Titus",
+	//       "nameLong": "Paul’s Letter to Titus"
+	//     }
+	//   ]
 	// }
 }
