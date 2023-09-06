@@ -1059,3 +1059,39 @@ func ExampleGetAudioBibleBooks() {
 	//   ]
 	// }
 }
+
+func ExampleGetAudioBibleBookById() {
+}
+
+func ExampleGetBibleChapters() {
+}
+
+func ExampleGetBibleChapterById() {
+}
+
+func ExampleGetAudioBibleChapters() {
+}
+
+func ExampleGetAudioBibleChapterById() {
+}
+
+func ExampleGetBibleBookSections() {
+}
+
+func ExampleGetBibleChapterSections() {
+}
+
+func ExampleGetBibleSectionById() {
+}
+
+func ExampleGetBiblePassage() {
+}
+
+func ExampleGetBibleChapterVerses() {
+}
+
+func ExampleGetBibleVerseById() {
+}
+
+func ExampleGetBibleSearchResults() {
+}
