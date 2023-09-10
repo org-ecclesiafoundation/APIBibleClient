@@ -61,6 +61,8 @@ func ExampleGetBibles() {
 		// Here is an example of an API call
 		bibles, biblesErr := GetBibles(apiKey, &biblesParams)
 		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
 		if biblesErr != nil {
 			fmt.Println("Do error handling for failing to get bibles here")
 		} else {
@@ -121,6 +123,8 @@ func ExampleGetBibleById() {
 		kjvBibleId := "de4e12af7f28f599-02"
 		bible, bibleErr := GetBibleById(apiKey, kjvBibleId)
 		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
 		if bibleErr != nil {
 			fmt.Println("Do error handling for failing to get bible here")
 		} else {
@@ -191,6 +195,8 @@ func ExampleGetAudioBibles() {
 		// Here is an example of an API call
 		audioBibles, audioBiblesErr := GetAudioBibles(apiKey, &audioBiblesParams)
 		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
 		if audioBiblesErr != nil {
 			fmt.Println("Do error handling for failing to get audio bibles here")
 		} else {
@@ -250,6 +256,8 @@ func ExampleGetAudioBibleById() {
 		webAudioBibleId := "105a06b6146d11e7-01"
 		audioBible, audioBibleErr := GetAudioBibleById(apiKey, webAudioBibleId)
 		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
 		if audioBibleErr != nil {
 			fmt.Println("Do error handling for failing to get audio audioBible here")
 		} else {
@@ -316,6 +324,8 @@ func ExampleGetBibleBooks() {
 		kjvBibleId := "de4e12af7f28f599-02"
 		bibleBooks, bibleBooksErr := GetBibleBooks(apiKey, kjvBibleId, &bibleBooksParams)
 		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
 		if bibleBooksErr != nil {
 			fmt.Println("Do error handling for failing to get audio audioBible here")
 		} else {
@@ -817,6 +827,8 @@ func ExampleGetBibleBookById() {
 		secondJohnId := "2JN"
 		bibleBook, bibleBookErr := GetBibleBookById(apiKey, kjvBibleId, secondJohnId, &bibleBookParams)
 		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
 		if bibleBookErr != nil {
 			fmt.Println("Do error handling for failing to get bible book here")
 		} else {
@@ -877,6 +889,8 @@ func ExampleGetAudioBibleBooks() {
 		webAudioBibleId := "105a06b6146d11e7-01"
 		audioBibleBooks, audioBibleBooksErr := GetAudioBibleBooks(apiKey, webAudioBibleId, &audioBibleBooksParams)
 		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
 		if audioBibleBooksErr != nil {
 			fmt.Println("Do error handling for failing to get audio bible books here")
 		} else {
