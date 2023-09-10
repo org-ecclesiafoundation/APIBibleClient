@@ -867,7 +867,7 @@ func ExampleGetAudioBibleBooks() {
 		// parameters used.
 		// You may use any subset of these parameters,
 		// including passing in a blank params.AudioBibleBooksParams{} struct ref
-		// to the call to GetBibleBookById.
+		// to the call to GetAudioBibleBooks.
 		audioBibleBooksParams := params.AudioBibleBooksParams{
 			IncludeChapters:            false,
 			IncludeChaptersAndSections: false,
@@ -1091,13 +1091,22 @@ func ExampleGetAudioBibleBookById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		webAudioBibleId := "105a06b6146d11e7-01"
-		bookId := "3JN"
+		// Here is an example of all the possible API
+		// parameters used.
+		// You may use any subset of these parameters,
+		// including passing in a blank params.AudioBibleBookParams{} struct ref
+		// to the call to GetAudioBibleBookById.
 		audioBibleBookParams := params.AudioBibleBookParams{
 			IncludeChapters: true,
 		}
+		// Here is an example of an API call
+		webAudioBibleId := "105a06b6146d11e7-01"
+		bookId := "3JN"
 		audioBibleBook, audioBibleBookErr :=
 			GetAudioBibleBookById(apiKey, webAudioBibleId, bookId, &audioBibleBookParams)
+		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
 		if audioBibleBookErr != nil {
 			fmt.Println("Do error handling for failing to get audio bible book here")
 		} else {
@@ -1136,11 +1145,39 @@ func ExampleGetBibleChapters() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		fmt.Println("Make call to API with key and all necessary parameters.")
-		stub(apiKey)
+		kjvBibleId := "de4e12af7f28f599-02"
+		bookOf3JohnId := "3JN"
+		bibleChapters, bibleChaptersErr := GetBibleChapters(apiKey, kjvBibleId, bookOf3JohnId)
+		if bibleChaptersErr != nil {
+			fmt.Println("Do error handling for failing to get bible chapters here")
+		} else {
+			prettyBibleChapters, prettifyErr := utils.Prettify(bibleChapters)
+			if prettifyErr != nil {
+				fmt.Println("Do error handling for failing to make pretty JSON here")
+			} else {
+				fmt.Println(prettyBibleChapters)
+			}
+		}
 	}
 	// Output:
-	// TODO
+	// {
+	//   "data": [
+	//     {
+	//       "bibleId": "de4e12af7f28f599-02",
+	//       "bookId": "3JN",
+	//       "id": "3JN.intro",
+	//       "number": "intro",
+	//       "reference": "3 John"
+	//     },
+	//     {
+	//       "bibleId": "de4e12af7f28f599-02",
+	//       "bookId": "3JN",
+	//       "id": "3JN.1",
+	//       "number": "1",
+	//       "reference": "3 John 1"
+	//     }
+	//   ]
+	// }
 }
 
 func ExampleGetBibleChapterById() {
