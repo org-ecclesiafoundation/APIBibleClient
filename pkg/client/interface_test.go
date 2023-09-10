@@ -1091,11 +1091,43 @@ func ExampleGetAudioBibleBookById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		fmt.Println("Make call to API with key and all necessary parameters.")
-		stub(apiKey)
+		webAudioBibleId := "105a06b6146d11e7-01"
+		bookId := "3JN"
+		audioBibleBookParams := params.AudioBibleBookParams{
+			IncludeChapters: true,
+		}
+		audioBibleBook, audioBibleBookErr :=
+			GetAudioBibleBookById(apiKey, webAudioBibleId, bookId, &audioBibleBookParams)
+		if audioBibleBookErr != nil {
+			fmt.Println("Do error handling for failing to get audio bible book here")
+		} else {
+			prettyAudioBibleBook, prettifyErr := utils.Prettify(audioBibleBook)
+			if prettifyErr != nil {
+				fmt.Println("Do error handling for failing to make pretty JSON here")
+			} else {
+				fmt.Println(prettyAudioBibleBook)
+			}
+		}
 	}
 	// Output:
-	// TODO
+	// {
+	//   "data": {
+	//     "abbreviation": "3 John",
+	//     "bibleId": "105a06b6146d11e7-01",
+	//     "chapters": [
+	//       {
+	//         "bibleId": "105a06b6146d11e7-01",
+	//         "bookId": "3JN",
+	//         "id": "3JN.1",
+	//         "number": "1",
+	//         "position": 61
+	//       }
+	//     ],
+	//     "id": "3JN",
+	//     "name": "3 John",
+	//     "nameLong": "John’s Third Letter"
+	//   }
+	// }
 }
 
 func ExampleGetBibleChapters() {
