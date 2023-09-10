@@ -1100,37 +1100,186 @@ func ExampleGetAudioBibleBooks() {
 }
 
 func ExampleGetAudioBibleBookById() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		fmt.Println("Make call to API with key and all necessary parameters.")
+		stub(apiKey)
+	}
+	fmt.Println(output)
+	// Output:
+	// TODO
 }
 
 func ExampleGetBibleChapters() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		fmt.Println("Make call to API with key and all necessary parameters.")
+		stub(apiKey)
+	}
+	fmt.Println(output)
+	// Output:
+	// TODO
 }
 
 func ExampleGetBibleChapterById() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		fmt.Println("Make call to API with key and all necessary parameters.")
+		stub(apiKey)
+	}
+	fmt.Println(output)
+	// Output:
+	// TODO
 }
 
 func ExampleGetAudioBibleChapters() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		fmt.Println("Make call to API with key and all necessary parameters.")
+		stub(apiKey)
+	}
+	fmt.Println(output)
+	// Output:
+	// TODO
 }
 
 func ExampleGetAudioBibleChapterById() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		fmt.Println("Make call to API with key and all necessary parameters.")
+		stub(apiKey)
+	}
+	fmt.Println(output)
+	// Output:
+	// TODO
 }
 
 func ExampleGetBibleBookSections() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		fmt.Println("Make call to API with key and all necessary parameters.")
+		stub(apiKey)
+	}
+	fmt.Println(output)
+	// Output:
+	// TODO
 }
 
 func ExampleGetBibleChapterSections() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		fmt.Println("Make call to API with key and all necessary parameters.")
+		stub(apiKey)
+	}
+	fmt.Println(output)
+	// Output:
+	// TODO
 }
 
 func ExampleGetBibleSectionById() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		fmt.Println("Make call to API with key and all necessary parameters.")
+		stub(apiKey)
+	}
+	fmt.Println(output)
+	// Output:
+	// TODO
 }
 
 func ExampleGetBiblePassage() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		fmt.Println("Make call to API with key and all necessary parameters.")
+		stub(apiKey)
+	}
+	fmt.Println(output)
+	// Output:
+	// TODO
 }
 
 func ExampleGetBibleChapterVerses() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		fmt.Println("Make call to API with key and all necessary parameters.")
+		stub(apiKey)
+	}
+	fmt.Println(output)
+	// Output:
+	// TODO
 }
 
 func ExampleGetBibleVerseById() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		fmt.Println("Make call to API with key and all necessary parameters.")
+		stub(apiKey)
+	}
+	fmt.Println(output)
+	// Output:
+	// TODO
 }
 
 func ExampleGetBibleSearchResults() {
+	apiKey, apiKeyErr := utils.GetApiKey()
+	var output string
+	if apiKeyErr != nil {
+		fmt.Println("Failed to get API key.\n" +
+			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
+	} else {
+		fmt.Println("Make call to API with key and all necessary parameters.")
+		stub(apiKey)
+	}
+	fmt.Println(output)
+	// Output:
+	// TODO
+}
+
+func stub(apiKey string) string {
+	apiKey = ""
+	return apiKey
 }
