@@ -807,7 +807,7 @@ func ExampleGetBibleBookById() {
 		// Here is an example of all the possible API
 		// parameters used.
 		// You may use any subset of these parameters,
-		// including passing in a blank params.BibleParams{} struct ref
+		// including passing in a blank params.BibleBookParams{} struct ref
 		// to the call to GetBibleBookById.
 		bibleBookParams := params.BibleBookParams{
 			IncludeChapters: true,
