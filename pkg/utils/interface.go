@@ -15,6 +15,11 @@ const (
 	RequestTimeout = 5 * time.Second
 )
 
+// GetJsonField extracts a particular field from a JSON
+func GetJsonField(body string, field string) (string, error) {
+	return internal.GetJsonField(body, field)
+}
+
 // Prettify pretty-prints the JSON response
 func Prettify(json string) (string, error) {
 	return internal.PrettifyJson(json)

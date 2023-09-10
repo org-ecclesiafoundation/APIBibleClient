@@ -11,6 +11,25 @@ import (
 	"os"
 )
 
+func GetJsonField(body string, field string) (string, error) {
+	var unmarshalledJsonMap map[string]interface{}
+	if unmarshalErr := json.Unmarshal([]byte(body), &unmarshalledJsonMap); unmarshalErr != nil {
+		return "", fmt.Errorf("Failed to unmarshall json:\n%s", body)
+	} else {
+		fieldContents, ok := unmarshalledJsonMap[field]
+		if !ok {
+			return "", fmt.Errorf("Error getting %s field from the following JSON:\n%s", field, body)
+		} else {
+			fieldString, jsonMarshalErr := json.Marshal(fieldContents)
+			if jsonMarshalErr != nil {
+				return "", fmt.Errorf("Error re-marshaling field %s from JSON\n%s", fieldString, body)
+			} else {
+				return string(fieldString), nil
+			}
+		}
+	}
+}
+
 func GetApiKey() (string, error) {
 	apiKey := os.Getenv("SCRIPTURE_API_BIBLE_KEY")
 	if apiKey == "" {
