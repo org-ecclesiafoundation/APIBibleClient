@@ -1148,6 +1148,9 @@ func ExampleGetBibleChapters() {
 		kjvBibleId := "de4e12af7f28f599-02"
 		bookOf3JohnId := "3JN"
 		bibleChapters, bibleChaptersErr := GetBibleChapters(apiKey, kjvBibleId, bookOf3JohnId)
+		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
 		if bibleChaptersErr != nil {
 			fmt.Println("Do error handling for failing to get bible chapters here")
 		} else {
@@ -1186,11 +1189,67 @@ func ExampleGetBibleChapterById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		fmt.Println("Make call to API with key and all necessary parameters.")
-		stub(apiKey)
+		// Here is an example of all the possible API
+		// parameters used.
+		// You may use any subset of these parameters,
+		// including passing in a blank params.BibleChapterParams{} struct ref
+		// to the call to GetBibleChapterById.
+		bibleChapterParams := params.BibleChapterParams{
+			ContentType:           "text", // choices are html, json, and text (html is default)
+			IncludeNotes:          false,
+			IncludeTitles:         false,
+			IncludeChapterNumbers: true,
+			IncludeVerseNumbers:   false,
+			IncludeVerseSpans:     false,
+			Parallels:             nil,
+		}
+		// Here is an example of an API call
+		kjvBibleId := "de4e12af7f28f599-02"
+		psalmChapter117Id := "PSA.117"
+		bibleChapter, bibleChapterErr := GetBibleChapterById(apiKey, kjvBibleId, psalmChapter117Id, &bibleChapterParams)
+		if bibleChapterErr != nil {
+			fmt.Println("Do error handling for failing to get bible chapter here")
+		} else {
+			// Here is an example of getting a single field from the response.
+			// This is required for duplicability of testing, as the metadata
+			// changes with every single API call.
+			bibleChapterData, getJsonFieldErr := utils.GetJsonField(bibleChapter, "data")
+			// Here is some boilerplate for handling errors and pretty-printing
+			// Note: The pretty-printing is just to make the output readable.
+			// You may not need to do this in your own production environment.
+			if getJsonFieldErr != nil {
+				fmt.Println("Do error handling for failing to get \"data\" field from JSON here")
+			} else {
+				prettyBibleChapterData, prettifyErr := utils.Prettify(bibleChapterData)
+				if prettifyErr != nil {
+					fmt.Println("Do error handling for failing to make pretty JSON here")
+				} else {
+					fmt.Println(prettyBibleChapterData)
+				}
+			}
+		}
 	}
 	// Output:
-	// TODO
+	// {
+	//   "bibleId": "de4e12af7f28f599-02",
+	//   "bookId": "PSA",
+	//   "content": "117\n   [1] O praise the LORD, all ye nations: praise him, all ye people.\n   [2] For his merciful kindness is great toward us: and the truth of the LORD endureth for ever. Praise ye the LORD.\n",
+	//   "copyright": "PUBLIC DOMAIN except in the United Kingdom, where a Crown Copyright applies to printing the KJV. See http://www.cambridge.org/about-us/who-we-are/queens-printers-patent",
+	//   "id": "PSA.117",
+	//   "next": {
+	//     "bookId": "PSA",
+	//     "id": "PSA.118",
+	//     "number": "118"
+	//   },
+	//   "number": "117",
+	//   "previous": {
+	//     "bookId": "PSA",
+	//     "id": "PSA.116",
+	//     "number": "116"
+	//   },
+	//   "reference": "Psalms 117",
+	//   "verseCount": 2
+	// }
 }
 
 func ExampleGetAudioBibleChapters() {
