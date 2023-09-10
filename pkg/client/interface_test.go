@@ -1258,11 +1258,36 @@ func ExampleGetAudioBibleChapters() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		fmt.Println("Make call to API with key and all necessary parameters.")
-		stub(apiKey)
+		// Here is an example of an API call
+		webAudioBibleId := "105a06b6146d11e7-01"
+		bookId := "3JN"
+		audioBibleChapters, audioBibleChaptersErr := GetAudioBibleChapters(apiKey, webAudioBibleId, bookId)
+		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
+		if audioBibleChaptersErr != nil {
+			fmt.Println("Do error handling for failing to get audio bible chapters here")
+		} else {
+			prettyBibleChaptersData, prettifyErr := utils.Prettify(audioBibleChapters)
+			if prettifyErr != nil {
+				fmt.Println("Do error handling for failing to make pretty JSON here")
+			} else {
+				fmt.Println(prettyBibleChaptersData)
+			}
+		}
 	}
 	// Output:
-	// TODO
+	// {
+	//   "data": [
+	//     {
+	//       "bibleId": "105a06b6146d11e7-01",
+	//       "bookId": "3JN",
+	//       "id": "3JN.1",
+	//       "number": "1",
+	//       "reference": "3 John 1"
+	//     }
+	//   ]
+	// }
 }
 
 func ExampleGetAudioBibleChapterById() {
