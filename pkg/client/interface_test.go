@@ -1296,11 +1296,43 @@ func ExampleGetAudioBibleChapterById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		fmt.Println("Make call to API with key and all necessary parameters.")
-		stub(apiKey)
+		// Here is an example of an API call
+		webAudioBibleId := "105a06b6146d11e7-01"
+		chapterId := "JHN.1"
+		audioBibleChapter, audioBibleChapterErr := GetAudioBibleChapterById(apiKey, webAudioBibleId, chapterId)
+		if audioBibleChapterErr != nil {
+			fmt.Println("Do error handling for failing to get audio bible chapters here")
+		} else {
+			// Here is an example of getting a single field from the response.
+			// This is required for duplicability of testing, as the metadata
+			// changes with every single API call.
+			audioBibleChapterData, getJsonFieldErr := utils.GetJsonField(audioBibleChapter, "data")
+			// Here is some boilerplate for handling errors and pretty-printing
+			// Note: The pretty-printing is just to make the output readable.
+			// You may not need to do this in your own production environment.
+			if getJsonFieldErr != nil {
+				fmt.Println("Do error handling for failing to get \"data\" field from JSON here")
+			} else {
+				audioBibleNextChapter, getJsonField2Err := utils.GetJsonField(audioBibleChapterData, "next")
+				if getJsonField2Err != nil {
+					fmt.Println("Do error handling for failing to get \"next\" field from JSON here")
+				} else {
+					prettyAudioBibleChapterData, prettifyErr := utils.Prettify(audioBibleNextChapter)
+					if prettifyErr != nil {
+						fmt.Println("Do error handling for failing to make pretty JSON here")
+					} else {
+						fmt.Println(prettyAudioBibleChapterData)
+					}
+				}
+			}
+		}
 	}
 	// Output:
-	// TODO
+	// {
+	//   "bookId": "JHN",
+	//   "id": "JHN.2",
+	//   "number": "2"
+	// }
 }
 
 func ExampleGetBibleBookSections() {
