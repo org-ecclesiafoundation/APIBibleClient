@@ -1336,29 +1336,77 @@ func ExampleGetAudioBibleChapterById() {
 }
 
 func ExampleGetBibleBookSections() {
+	// NOTE: As of 2023-09-15, getting bible book sections
+	// is experimental on the part of scripture.api.bible
+	// Thus, the output of this is an error message.
+	// Once we become aware of this API either working or getting deprecated
+	// We will modify or remove this code accordingly.
 	apiKey, apiKeyErr := utils.GetApiKey()
 	if apiKeyErr != nil {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		fmt.Println("Make call to API with key and all necessary parameters.")
-		stub(apiKey)
+		// Here is an example of an API call
+		kjvBibleId := "de4e12af7f28f599-02"
+		bookId := "3JN"
+		bibleBookSections, bibleBookSectionsErr := GetBibleBookSections(apiKey, kjvBibleId, bookId)
+		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
+		if bibleBookSectionsErr != nil {
+			fmt.Println("Do error handling for failing to get bible book sections here")
+		} else {
+			prettyBookSections, prettifyErr := utils.Prettify(bibleBookSections)
+			if prettifyErr != nil {
+				fmt.Println("Do error handling for failing to make pretty JSON here")
+			} else {
+				fmt.Println(prettyBookSections)
+			}
+		}
 	}
 	// Output:
-	// TODO
+	// {
+	//   "error": "Not Found",
+	//   "message": "Sections not found for bookId",
+	//   "statusCode": 404
+	// }
 }
 
 func ExampleGetBibleChapterSections() {
+	// NOTE: As of 2023-09-15, getting bible chapter sections
+	// is experimental on the part of scripture.api.bible
+	// Thus, the output of this is an error message.
+	// Once we become aware of this API either working or getting deprecated
+	// We will modify or remove this code accordingly.
 	apiKey, apiKeyErr := utils.GetApiKey()
 	if apiKeyErr != nil {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		fmt.Println("Make call to API with key and all necessary parameters.")
-		stub(apiKey)
+		// Here is an example of an API call
+		kjvBibleId := "de4e12af7f28f599-02"
+		chapterId := "3JN.1"
+		bibleChapterSections, bibleChapterSectionsErr := GetBibleChapterSections(apiKey, kjvBibleId, chapterId)
+		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
+		if bibleChapterSectionsErr != nil {
+			fmt.Println("Do error handling for failing to get bible book sections here")
+		} else {
+			prettyChapterSections, prettifyErr := utils.Prettify(bibleChapterSections)
+			if prettifyErr != nil {
+				fmt.Println("Do error handling for failing to make pretty JSON here")
+			} else {
+				fmt.Println(prettyChapterSections)
+			}
+		}
 	}
 	// Output:
-	// TODO
+	// {
+	//   "error": "Not Found",
+	//   "message": "Sections not found for bookId",
+	//   "statusCode": 404
+	// }
 }
 
 func ExampleGetBibleSectionById() {
