@@ -1410,16 +1410,55 @@ func ExampleGetBibleChapterSections() {
 }
 
 func ExampleGetBibleSectionById() {
+	// NOTE: As of 2023-09-15, getting bible sections
+	// is experimental on the part of scripture.api.bible
+	// Thus, the output of this is an error message.
+	// Once we become aware of this API either working or getting deprecated
+	// We will modify or remove this code accordingly.
 	apiKey, apiKeyErr := utils.GetApiKey()
 	if apiKeyErr != nil {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		fmt.Println("Make call to API with key and all necessary parameters.")
-		stub(apiKey)
+		// Here is an example of all the possible API
+		// parameters used.
+		// You may use any subset of these parameters,
+		// including passing in a blank params.BibleSectionParams{} struct ref
+		// to the call to GetBibleSectionById.
+		kjvBibleId := "de4e12af7f28f599-02"
+		webBibleId := "32664dc3288a28df-03"
+		bibleSectionParams := params.BibleSectionParams{
+			ContentType:           "text",
+			IncludeNotes:          false,
+			IncludeTitles:         false,
+			IncludeChapterNumbers: false,
+			IncludeVerseNumbers:   false,
+			IncludeVerseSpans:     false,
+			Parallels:             []string{kjvBibleId, webBibleId},
+		}
+		// Here is an example of an API call
+		sectionId := "abc123"
+		bibleSection, bibleSectionErr := GetBibleSectionById(apiKey, kjvBibleId, sectionId, &bibleSectionParams)
+		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
+		if bibleSectionErr != nil {
+			fmt.Println("Do error handling for failing to get bible book sections here")
+		} else {
+			prettySection, prettifyErr := utils.Prettify(bibleSection)
+			if prettifyErr != nil {
+				fmt.Println("Do error handling for failing to make pretty JSON here")
+			} else {
+				fmt.Println(prettySection)
+			}
+		}
 	}
 	// Output:
-	// TODO
+	// {
+	//   "error": "Bad Request",
+	//   "message": "Invalid request params input",
+	//   "statusCode": 400
+	// }
 }
 
 func ExampleGetBiblePassage() {
