@@ -50,11 +50,12 @@ func ExampleGetBibles() {
 		// You may use any subset of these parameters,
 		// including passing in a blank params.BibleParams{} struct ref
 		// to the call to GetBibles.
+		kjvBibleId := "de4e12af7f28f599-02"
 		biblesParams := params.BiblesParams{
 			Language:           "eng",
 			Abbreviation:       "kjv",
 			Name:               "King James",
-			Ids:                []string{"de4e12af7f28f599-01"},
+			Ids:                []string{kjvBibleId},
 			IncludeFullDetails: true,
 		}
 		// Here is an example of an API call
@@ -89,9 +90,9 @@ func ExampleGetBibles() {
 	//         }
 	//       ],
 	//       "dblId": "de4e12af7f28f599",
-	//       "description": "Ecumenical",
-	//       "descriptionLocal": "Ecumenical",
-	//       "id": "de4e12af7f28f599-01",
+	//       "description": "Protestant",
+	//       "descriptionLocal": "Protestant",
+	//       "id": "de4e12af7f28f599-02",
 	//       "info": "\u003cp\u003eThis historical translation of the Holy Bible is brought to you in quality digital format by the \u003ca href=\"https://crosswire.org/\"\u003eCrosswire Bible Society\u003c/a\u003e and \u003ca href=\"https://eBible.org\"\u003eeBible.org\u003c/a\u003e.\u003c/p\u003e",
 	//       "language": {
 	//         "id": "eng",
@@ -104,7 +105,7 @@ func ExampleGetBibles() {
 	//       "nameLocal": "King James Version",
 	//       "relatedDbl": null,
 	//       "type": "text",
-	//       "updatedAt": "2023-05-03T21:21:08.000Z"
+	//       "updatedAt": "2023-05-03T09:23:59.000Z"
 	//     }
 	//   ]
 	// }
@@ -1427,6 +1428,7 @@ func ExampleGetBibleSectionById() {
 		// to the call to GetBibleSectionById.
 		kjvBibleId := "de4e12af7f28f599-02"
 		webBibleId := "32664dc3288a28df-03"
+		asvBibleId := "685d1470fe4d5c3b-01"
 		bibleSectionParams := params.BibleSectionParams{
 			ContentType:           "text",
 			IncludeNotes:          false,
@@ -1434,7 +1436,7 @@ func ExampleGetBibleSectionById() {
 			IncludeChapterNumbers: false,
 			IncludeVerseNumbers:   false,
 			IncludeVerseSpans:     false,
-			Parallels:             []string{kjvBibleId, webBibleId},
+			Parallels:             []string{asvBibleId, webBibleId},
 		}
 		// Here is an example of an API call
 		sectionId := "abc123"
@@ -1472,6 +1474,8 @@ func ExampleGetBiblePassage() {
 		// You may use any subset of these parameters,
 		// including passing in a blank params.BiblePassageParams{} struct ref
 		// to the call to GetBiblePassage.
+		webBibleId := "32664dc3288a28df-03"
+		asvBibleId := "685d1470fe4d5c3b-01"
 		biblePassageParams := params.BiblePassageParams{
 			ContentType:           "text",
 			IncludeNotes:          false,
@@ -1479,7 +1483,7 @@ func ExampleGetBiblePassage() {
 			IncludeChapterNumbers: false,
 			IncludeVerseNumbers:   false,
 			IncludeVerseSpans:     false,
-			Parallels:             nil,
+			Parallels:             []string{asvBibleId, webBibleId},
 			UseOrgId:              false,
 		}
 		// Here is an example of an API call
@@ -1519,6 +1523,34 @@ func ExampleGetBiblePassage() {
 	//   "copyright": "PUBLIC DOMAIN except in the United Kingdom, where a Crown Copyright applies to printing the KJV. See http://www.cambridge.org/about-us/who-we-are/queens-printers-patent",
 	//   "id": "2TI.3.16-2TI.3.17",
 	//   "orgId": "2TI.3.16-2TI.3.17",
+	//   "parallels": [
+	//     {
+	//       "bibleId": "685d1470fe4d5c3b-01",
+	//       "bookId": "2TI",
+	//       "chapterIds": [
+	//         "2TI.3"
+	//       ],
+	//       "content": "     [16] Every scripture is inspired of God, and profitable for teaching, for reproof, for correction, for instruction which is in righteousness:  [17] that the man of God may be complete, furnished completely unto every good work.\n",
+	//       "copyright": "PUBLIC DOMAIN",
+	//       "id": "2TI.3.16-2TI.3.17",
+	//       "orgId": "2TI.3.16-2TI.3.17",
+	//       "reference": "2 Timothy 3:16-17",
+	//       "verseCount": 2
+	//     },
+	//     {
+	//       "bibleId": "32664dc3288a28df-03",
+	//       "bookId": "2TI",
+	//       "chapterIds": [
+	//         "2TI.3"
+	//       ],
+	//       "content": "     [16] Every Scripture is God-breathed and profitable for teaching, for reproof, for correction, and for instruction in righteousness,  [17] that each person who belongs to God may be complete, thoroughly equipped for every good work.\n",
+	//       "copyright": "PUBLIC DOMAIN (not copyrighted)",
+	//       "id": "2TI.3.16-2TI.3.17",
+	//       "orgId": "2TI.3.16-2TI.3.17",
+	//       "reference": "2 Timothy 3:16-17",
+	//       "verseCount": 2
+	//     }
+	//   ],
 	//   "reference": "2 Timothy 3:16-17",
 	//   "verseCount": 2
 	// }
@@ -1577,11 +1609,85 @@ func ExampleGetBibleVerseById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		fmt.Println("Make call to API with key and all necessary parameters.")
-		stub(apiKey)
+		// Here is an example of all the possible API
+		// parameters used.
+		// You may use any subset of these parameters,
+		// including passing in a blank params.BibleVerseParams{} struct ref
+		// to the call to GetBibleVerseById.
+		kjvBibleId := "de4e12af7f28f599-02"
+		webBibleId := "32664dc3288a28df-03"
+		asvBibleId := "685d1470fe4d5c3b-01"
+		bibleVerseParams := params.BibleVerseParams{
+			ContentType:           "text",
+			IncludeNotes:          false,
+			IncludeTitles:         false,
+			IncludeChapterNumbers: false,
+			IncludeVerseNumbers:   false,
+			IncludeVerseSpans:     false,
+			Parallels:             []string{asvBibleId, webBibleId},
+			UseOrgId:              false,
+		}
+		verse := "JHN.3.16"
+		bibleVerse, bibleVerseErr := GetBibleVerseById(apiKey, kjvBibleId, verse, &bibleVerseParams)
+		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
+		if bibleVerseErr != nil {
+			fmt.Println("Do error handling for failing to get bible book sections here")
+		} else {
+			bibleVerseData, getJsonFieldErr := utils.GetJsonField(bibleVerse, "data")
+			if bibleVerseErr != nil {
+				fmt.Println("Do error handling for failing to get bible book sections here")
+			} else {
+				// Here is some boilerplate for handling errors and pretty-printing
+				// Note: The pretty-printing is just to make the output readable.
+				// You may not need to do this in your own production environment.
+				if getJsonFieldErr != nil {
+					fmt.Println("Do error handling for failing to get \"data\" field from JSON here")
+				} else {
+					prettyVerseData, prettifyErr := utils.Prettify(bibleVerseData)
+					if prettifyErr != nil {
+						fmt.Println("Do error handling for failing to make pretty JSON here")
+					} else {
+						fmt.Println(prettyVerseData)
+					}
+				}
+			}
+		}
 	}
 	// Output:
-	// TODO
+	// {
+	//   "bibleId": "de4e12af7f28f599-02",
+	//   "bookId": "JHN",
+	//   "chapterId": "JHN.3",
+	//   "content": "     [16] ¶ For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. \n",
+	//   "copyright": "PUBLIC DOMAIN except in the United Kingdom, where a Crown Copyright applies to printing the KJV. See http://www.cambridge.org/about-us/who-we-are/queens-printers-patent",
+	//   "id": "JHN.3.16",
+	//   "next": {
+	//     "id": "JHN.3.17",
+	//     "number": "17"
+	//   },
+	//   "orgId": "JHN.3.16",
+	//   "parallels": [
+	//     {
+	//       "bibleId": "32664dc3288a28df-03",
+	//       "bookId": "JHN",
+	//       "chapterId": "JHN.3",
+	//       "content": "     [16] For God so loved the world, that he gave his only born Son, that whoever believes in him should not perish, but have eternal life.  \n",
+	//       "copyright": "PUBLIC DOMAIN (not copyrighted)",
+	//       "id": "JHN.3.16",
+	//       "orgId": "JHN.3.16",
+	//       "reference": "John 3:16",
+	//       "verseCount": 1
+	//     }
+	//   ],
+	//   "previous": {
+	//     "id": "JHN.3.15",
+	//     "number": "15"
+	//   },
+	//   "reference": "John 3:16",
+	//   "verseCount": 1
+	// }
 }
 
 func ExampleGetBibleSearchResults() {
