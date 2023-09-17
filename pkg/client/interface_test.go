@@ -1696,11 +1696,84 @@ func ExampleGetBibleSearchResults() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		fmt.Println("Make call to API with key and all necessary parameters.")
-		stub(apiKey)
+		// Here is an example of all the possible API
+		// parameters used.
+		// You may use any subset of these parameters,
+		// including passing in a blank params.BibleSearchParams{} struct ref
+		// to the call to GetBibleSearchResults.
+		bibleSearchParams := params.BibleSearchParams{
+			Query:     "Love",
+			Limit:     3,           // Default value is 10
+			Offset:    5,           // Pagination
+			Sort:      "canonical", // Supported values are relevance (default), canonical and reverse-canonical
+			Range:     "MAT.1-REV.22",
+			Fuzziness: "0", // Default value is AUTO. This accounts for difference in spelling
+		}
+		// Here is an example of an API call
+		kjvBibleId := "de4e12af7f28f599-02"
+		bibleSearchResult, bibleSearchErr := GetBibleSearchResults(apiKey, kjvBibleId, &bibleSearchParams)
+		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
+		if bibleSearchErr != nil {
+			fmt.Println("Do error handling for failing to get bible book sections here")
+		} else {
+			// Here is an example of getting a single field from the response.
+			// This is required for duplicability of testing, as the metadata
+			// changes with every single API call.
+			bibleSearchResultData, getJsonFieldErr := utils.GetJsonField(bibleSearchResult, "data")
+			// Here is some boilerplate for handling errors and pretty-printing
+			// Note: The pretty-printing is just to make the output readable.
+			// You may not need to do this in your own production environment.
+			if getJsonFieldErr != nil {
+				fmt.Println("Do error handling for failing to get \"data\" field from JSON here")
+			} else {
+				prettyBibleSearchResultData, prettifyErr := utils.Prettify(bibleSearchResultData)
+				if prettifyErr != nil {
+					fmt.Println("Do error handling for failing to make pretty JSON here")
+				} else {
+					fmt.Println(prettyBibleSearchResultData)
+				}
+			}
+		}
 	}
 	// Output:
-	// TODO
+	// {
+	//   "limit": 3,
+	//   "offset": 5,
+	//   "query": "Love",
+	//   "total": 183,
+	//   "verseCount": 3,
+	//   "verses": [
+	//     {
+	//       "bibleId": "de4e12af7f28f599-02",
+	//       "bookId": "MAT",
+	//       "chapterId": "MAT.19",
+	//       "id": "MAT.19.19",
+	//       "orgId": "MAT.19.19",
+	//       "reference": "Matthew 19:19",
+	//       "text": "Honour thy father and thy  mother: and, Thou shalt love thy neighbour as thyself."
+	//     },
+	//     {
+	//       "bibleId": "de4e12af7f28f599-02",
+	//       "bookId": "MAT",
+	//       "chapterId": "MAT.22",
+	//       "id": "MAT.22.37",
+	//       "orgId": "MAT.22.37",
+	//       "reference": "Matthew 22:37",
+	//       "text": "Jesus said unto him, Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind."
+	//     },
+	//     {
+	//       "bibleId": "de4e12af7f28f599-02",
+	//       "bookId": "MAT",
+	//       "chapterId": "MAT.22",
+	//       "id": "MAT.22.39",
+	//       "orgId": "MAT.22.39",
+	//       "reference": "Matthew 22:39",
+	//       "text": "And the second is  like unto it, Thou shalt love thy neighbour as thyself."
+	//     }
+	//   ]
+	// }
 }
 
 func stub(apiKey string) string {
