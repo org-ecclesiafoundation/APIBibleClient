@@ -1467,11 +1467,61 @@ func ExampleGetBiblePassage() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		fmt.Println("Make call to API with key and all necessary parameters.")
-		stub(apiKey)
+		// Here is an example of all the possible API
+		// parameters used.
+		// You may use any subset of these parameters,
+		// including passing in a blank params.BiblePassageParams{} struct ref
+		// to the call to GetBiblePassage.
+		biblePassageParams := params.BiblePassageParams{
+			ContentType:           "text",
+			IncludeNotes:          false,
+			IncludeTitles:         false,
+			IncludeChapterNumbers: false,
+			IncludeVerseNumbers:   false,
+			IncludeVerseSpans:     false,
+			Parallels:             nil,
+			UseOrgId:              false,
+		}
+		// Here is an example of an API call
+		kjvBibleId := "de4e12af7f28f599-02"
+		passage := "2TI.3.16-2TI.3.17"
+		biblePassage, biblePassageErr := GetBiblePassage(apiKey, kjvBibleId, passage, &biblePassageParams)
+		// Here is an example of getting a single field from the response.
+		// This is required for duplicability of testing, as the metadata
+		// changes with every single API call.
+		biblePassageData, getJsonFieldErr := utils.GetJsonField(biblePassage, "data")
+		if biblePassageErr != nil {
+			fmt.Println("Do error handling for failing to get bible book sections here")
+		} else {
+			// Here is some boilerplate for handling errors and pretty-printing
+			// Note: The pretty-printing is just to make the output readable.
+			// You may not need to do this in your own production environment.
+			if getJsonFieldErr != nil {
+				fmt.Println("Do error handling for failing to get \"data\" field from JSON here")
+			} else {
+				prettyPassageData, prettifyErr := utils.Prettify(biblePassageData)
+				if prettifyErr != nil {
+					fmt.Println("Do error handling for failing to make pretty JSON here")
+				} else {
+					fmt.Println(prettyPassageData)
+				}
+			}
+		}
 	}
 	// Output:
-	// TODO
+	// {
+	//   "bibleId": "de4e12af7f28f599-02",
+	//   "bookId": "2TI",
+	//   "chapterIds": [
+	//     "2TI.3"
+	//   ],
+	//   "content": "     [16] All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness:  [17] That the man of God may be perfect, throughly furnished unto all good works.\n",
+	//   "copyright": "PUBLIC DOMAIN except in the United Kingdom, where a Crown Copyright applies to printing the KJV. See http://www.cambridge.org/about-us/who-we-are/queens-printers-patent",
+	//   "id": "2TI.3.16-2TI.3.17",
+	//   "orgId": "2TI.3.16-2TI.3.17",
+	//   "reference": "2 Timothy 3:16-17",
+	//   "verseCount": 2
+	// }
 }
 
 func ExampleGetBibleChapterVerses() {
