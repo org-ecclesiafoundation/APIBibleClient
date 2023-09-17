@@ -1530,11 +1530,45 @@ func ExampleGetBibleChapterVerses() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		fmt.Println("Make call to API with key and all necessary parameters.")
-		stub(apiKey)
+		// Here is an example of an API call
+		kjvBibleId := "de4e12af7f28f599-02"
+		chapterId := "PSA.117"
+		bibleChapterVerses, bibleChapterVersesErr := GetBibleChapterVerses(apiKey, kjvBibleId, chapterId)
+		// Here is some boilerplate for handling errors and pretty-printing
+		// Note: The pretty-printing is just to make the output readable.
+		// You may not need to do this in your own production environment.
+		if bibleChapterVersesErr != nil {
+			fmt.Println("Do error handling for failing to get bible book sections here")
+		} else {
+			prettyChapterVerses, prettifyErr := utils.Prettify(bibleChapterVerses)
+			if prettifyErr != nil {
+				fmt.Println("Do error handling for failing to make pretty JSON here")
+			} else {
+				fmt.Println(prettyChapterVerses)
+			}
+		}
 	}
 	// Output:
-	// TODO
+	// {
+	//   "data": [
+	//     {
+	//       "bibleId": "de4e12af7f28f599-02",
+	//       "bookId": "PSA",
+	//       "chapterId": "PSA.117",
+	//       "id": "PSA.117.1",
+	//       "orgId": "PSA.117.1",
+	//       "reference": "Psalms 117:1"
+	//     },
+	//     {
+	//       "bibleId": "de4e12af7f28f599-02",
+	//       "bookId": "PSA",
+	//       "chapterId": "PSA.117",
+	//       "id": "PSA.117.2",
+	//       "orgId": "PSA.117.2",
+	//       "reference": "Psalms 117:2"
+	//     }
+	//   ]
+	// }
 }
 
 func ExampleGetBibleVerseById() {
