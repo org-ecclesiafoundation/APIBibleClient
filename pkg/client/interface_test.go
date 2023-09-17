@@ -1775,8 +1775,3 @@ func ExampleGetBibleSearchResults() {
 	//   ]
 	// }
 }
-
-func stub(apiKey string) string {
-	apiKey = ""
-	return apiKey
-}
