@@ -32,3 +32,8 @@ Prior to releasing v1.0 the following needs to be done:
 ### Maintenance
 - Keep up on the scripture.api.bible live documentation
 - Keep up if they decide to turn the experimental functionality into actual functionality
+- better document the params and clean up the examples at bare minimum.
+- give examples of each util in action by itself.
+- write a set of high-level blurbs in the README to help guide folks to the right stuff in the package documentation.
+- set up at least a monthly cadence of running the tests to see if the API has changed, and at least a quarterly review of the API documentation to see if there are any new versions or endpoints.
+That will take it from something I'd be ashamed to put a v1.0.0 tag on, to something that mightn't be optimal, but at least deserves the tag.

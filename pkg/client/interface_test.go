@@ -31,10 +31,10 @@
 package client
 
 import (
-	"ecclesiafoundation.org/APIBibleClient/pkg/client/params"
-	"ecclesiafoundation.org/APIBibleClient/pkg/utils"
 	"fmt"
 	"testing"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/utils"
 )
 
 func TestStub(t *testing.T) {}
@@ -45,12 +45,8 @@ func ExampleGetBibles() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of all the possible API
-		// parameters used.
-		// You may use any subset of these parameters,
-		// including passing in a blank params.BibleParams{} struct ref
-		// to the call to GetBibles.
 		kjvBibleId := "de4e12af7f28f599-02"
+		// All parameter fields are optional, and default to Golang's default values
 		biblesParams := params.BiblesParams{
 			Language:           "eng",
 			Abbreviation:       "kjv",
@@ -58,11 +54,7 @@ func ExampleGetBibles() {
 			Ids:                []string{kjvBibleId},
 			IncludeFullDetails: true,
 		}
-		// Here is an example of an API call
 		bibles, biblesErr := GetBibles(apiKey, &biblesParams)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if biblesErr != nil {
 			fmt.Println("Do error handling for failing to get bibles here")
 		} else {
@@ -117,12 +109,8 @@ func ExampleGetBibleById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of an API call
 		kjvBibleId := "de4e12af7f28f599-02"
 		bible, bibleErr := GetBibleById(apiKey, kjvBibleId)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if bibleErr != nil {
 			fmt.Println("Do error handling for failing to get bible here")
 		} else {
@@ -175,12 +163,8 @@ func ExampleGetAudioBibles() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of all the possible API
-		// parameters used.
-		// You may use any subset of these parameters,
-		// including passing in a blank params.AudioBiblesParams{} struct ref
-		// to the call to Foo.
 		worldEnglishBibleID := "9879dbb7cfe39e4d-01"
+		// All parameter fields are optional, and default to Golang's default values
 		audioBiblesParams := params.AudioBiblesParams{
 			Language:           "eng",
 			Abbreviation:       "WEB13",
@@ -188,11 +172,7 @@ func ExampleGetAudioBibles() {
 			RelatedTextBibleId: worldEnglishBibleID,
 			IncludeFullDetails: true,
 		}
-		// Here is an example of an API call
 		audioBibles, audioBiblesErr := GetAudioBibles(apiKey, &audioBiblesParams)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if audioBiblesErr != nil {
 			fmt.Println("Do error handling for failing to get audio bibles here")
 		} else {
@@ -246,12 +226,8 @@ func ExampleGetAudioBibleById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of an API call
 		webAudioBibleId := "105a06b6146d11e7-01"
 		audioBible, audioBibleErr := GetAudioBibleById(apiKey, webAudioBibleId)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if audioBibleErr != nil {
 			fmt.Println("Do error handling for failing to get audio audioBible here")
 		} else {
@@ -303,21 +279,13 @@ func ExampleGetBibleBooks() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of all the possible API
-		// parameters used.
-		// You may use any subset of these parameters,
-		// including passing in a blank params.BibleBooksParams{} struct ref
-		// to the call to Foo.
+		// All parameter fields are optional, and default to Golang's default values
 		bibleBooksParams := params.BibleBooksParams{
 			IncludeChapters:            false,
 			IncludeChaptersAndSections: false,
 		}
-		// Here is an example of an API call
 		kjvBibleId := "de4e12af7f28f599-02"
 		bibleBooks, bibleBooksErr := GetBibleBooks(apiKey, kjvBibleId, &bibleBooksParams)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if bibleBooksErr != nil {
 			fmt.Println("Do error handling for failing to get audio audioBible here")
 		} else {
@@ -804,21 +772,13 @@ func ExampleGetBibleBookById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of all the possible API
-		// parameters used.
-		// You may use any subset of these parameters,
-		// including passing in a blank params.BibleBookParams{} struct ref
-		// to the call to GetBibleBookById.
+		// All parameter fields are optional, and default to Golang's default values
 		bibleBookParams := params.BibleBookParams{
 			IncludeChapters: true,
 		}
-		// Here is an example of an API call
 		kjvBibleId := "de4e12af7f28f599-02"
 		secondJohnId := "2JN"
 		bibleBook, bibleBookErr := GetBibleBookById(apiKey, kjvBibleId, secondJohnId, &bibleBookParams)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if bibleBookErr != nil {
 			fmt.Println("Do error handling for failing to get bible book here")
 		} else {
@@ -864,21 +824,13 @@ func ExampleGetAudioBibleBooks() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of all the possible API
-		// parameters used.
-		// You may use any subset of these parameters,
-		// including passing in a blank params.AudioBibleBooksParams{} struct ref
-		// to the call to GetAudioBibleBooks.
+		// All parameter fields are optional, and default to Golang's default values
 		audioBibleBooksParams := params.AudioBibleBooksParams{
 			IncludeChapters:            false,
 			IncludeChaptersAndSections: false,
 		}
-		// Here is an example of an API call
 		webAudioBibleId := "105a06b6146d11e7-01"
 		audioBibleBooks, audioBibleBooksErr := GetAudioBibleBooks(apiKey, webAudioBibleId, &audioBibleBooksParams)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if audioBibleBooksErr != nil {
 			fmt.Println("Do error handling for failing to get audio bible books here")
 		} else {
@@ -1092,22 +1044,14 @@ func ExampleGetAudioBibleBookById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of all the possible API
-		// parameters used.
-		// You may use any subset of these parameters,
-		// including passing in a blank params.AudioBibleBookParams{} struct ref
-		// to the call to GetAudioBibleBookById.
+		// All parameter fields are optional, and default to Golang's default values
 		audioBibleBookParams := params.AudioBibleBookParams{
 			IncludeChapters: true,
 		}
-		// Here is an example of an API call
 		webAudioBibleId := "105a06b6146d11e7-01"
 		bookId := "3JN"
 		audioBibleBook, audioBibleBookErr :=
 			GetAudioBibleBookById(apiKey, webAudioBibleId, bookId, &audioBibleBookParams)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if audioBibleBookErr != nil {
 			fmt.Println("Do error handling for failing to get audio bible book here")
 		} else {
@@ -1149,9 +1093,6 @@ func ExampleGetBibleChapters() {
 		kjvBibleId := "de4e12af7f28f599-02"
 		bookOf3JohnId := "3JN"
 		bibleChapters, bibleChaptersErr := GetBibleChapters(apiKey, kjvBibleId, bookOf3JohnId)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if bibleChaptersErr != nil {
 			fmt.Println("Do error handling for failing to get bible chapters here")
 		} else {
@@ -1190,11 +1131,7 @@ func ExampleGetBibleChapterById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of all the possible API
-		// parameters used.
-		// You may use any subset of these parameters,
-		// including passing in a blank params.BibleChapterParams{} struct ref
-		// to the call to GetBibleChapterById.
+		// All parameter fields are optional, and default to Golang's default values
 		bibleChapterParams := params.BibleChapterParams{
 			ContentType:           "text", // choices are html, json, and text (html is default)
 			IncludeNotes:          false,
@@ -1204,7 +1141,6 @@ func ExampleGetBibleChapterById() {
 			IncludeVerseSpans:     false,
 			Parallels:             nil,
 		}
-		// Here is an example of an API call
 		kjvBibleId := "de4e12af7f28f599-02"
 		psalmChapter117Id := "PSA.117"
 		bibleChapter, bibleChapterErr := GetBibleChapterById(apiKey, kjvBibleId, psalmChapter117Id, &bibleChapterParams)
@@ -1215,9 +1151,6 @@ func ExampleGetBibleChapterById() {
 			// This is required for duplicability of testing, as the metadata
 			// changes with every single API call.
 			bibleChapterData, getJsonFieldErr := utils.GetJsonField(bibleChapter, "data")
-			// Here is some boilerplate for handling errors and pretty-printing
-			// Note: The pretty-printing is just to make the output readable.
-			// You may not need to do this in your own production environment.
 			if getJsonFieldErr != nil {
 				fmt.Println("Do error handling for failing to get \"data\" field from JSON here")
 			} else {
@@ -1259,13 +1192,9 @@ func ExampleGetAudioBibleChapters() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of an API call
 		webAudioBibleId := "105a06b6146d11e7-01"
 		bookId := "3JN"
 		audioBibleChapters, audioBibleChaptersErr := GetAudioBibleChapters(apiKey, webAudioBibleId, bookId)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if audioBibleChaptersErr != nil {
 			fmt.Println("Do error handling for failing to get audio bible chapters here")
 		} else {
@@ -1297,7 +1226,6 @@ func ExampleGetAudioBibleChapterById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of an API call
 		webAudioBibleId := "105a06b6146d11e7-01"
 		chapterId := "JHN.1"
 		audioBibleChapter, audioBibleChapterErr := GetAudioBibleChapterById(apiKey, webAudioBibleId, chapterId)
@@ -1308,9 +1236,6 @@ func ExampleGetAudioBibleChapterById() {
 			// This is required for duplicability of testing, as the metadata
 			// changes with every single API call.
 			audioBibleChapterData, getJsonFieldErr := utils.GetJsonField(audioBibleChapter, "data")
-			// Here is some boilerplate for handling errors and pretty-printing
-			// Note: The pretty-printing is just to make the output readable.
-			// You may not need to do this in your own production environment.
 			if getJsonFieldErr != nil {
 				fmt.Println("Do error handling for failing to get \"data\" field from JSON here")
 			} else {
@@ -1347,13 +1272,9 @@ func ExampleGetBibleBookSections() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of an API call
 		kjvBibleId := "de4e12af7f28f599-02"
 		bookId := "3JN"
 		bibleBookSections, bibleBookSectionsErr := GetBibleBookSections(apiKey, kjvBibleId, bookId)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if bibleBookSectionsErr != nil {
 			fmt.Println("Do error handling for failing to get bible book sections here")
 		} else {
@@ -1384,13 +1305,9 @@ func ExampleGetBibleChapterSections() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of an API call
 		kjvBibleId := "de4e12af7f28f599-02"
 		chapterId := "3JN.1"
 		bibleChapterSections, bibleChapterSectionsErr := GetBibleChapterSections(apiKey, kjvBibleId, chapterId)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if bibleChapterSectionsErr != nil {
 			fmt.Println("Do error handling for failing to get bible book sections here")
 		} else {
@@ -1421,14 +1338,10 @@ func ExampleGetBibleSectionById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of all the possible API
-		// parameters used.
-		// You may use any subset of these parameters,
-		// including passing in a blank params.BibleSectionParams{} struct ref
-		// to the call to GetBibleSectionById.
 		kjvBibleId := "de4e12af7f28f599-02"
 		webBibleId := "32664dc3288a28df-03"
 		asvBibleId := "685d1470fe4d5c3b-01"
+		// All parameter fields are optional, and default to Golang's default values
 		bibleSectionParams := params.BibleSectionParams{
 			ContentType:           "text",
 			IncludeNotes:          false,
@@ -1438,12 +1351,8 @@ func ExampleGetBibleSectionById() {
 			IncludeVerseSpans:     false,
 			Parallels:             []string{asvBibleId, webBibleId},
 		}
-		// Here is an example of an API call
 		sectionId := "abc123"
 		bibleSection, bibleSectionErr := GetBibleSectionById(apiKey, kjvBibleId, sectionId, &bibleSectionParams)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if bibleSectionErr != nil {
 			fmt.Println("Do error handling for failing to get bible book sections here")
 		} else {
@@ -1469,13 +1378,9 @@ func ExampleGetBiblePassage() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of all the possible API
-		// parameters used.
-		// You may use any subset of these parameters,
-		// including passing in a blank params.BiblePassageParams{} struct ref
-		// to the call to GetBiblePassage.
 		webBibleId := "32664dc3288a28df-03"
 		asvBibleId := "685d1470fe4d5c3b-01"
+		// All parameter fields are optional, and default to Golang's default values
 		biblePassageParams := params.BiblePassageParams{
 			ContentType:           "text",
 			IncludeNotes:          false,
@@ -1486,7 +1391,6 @@ func ExampleGetBiblePassage() {
 			Parallels:             []string{asvBibleId, webBibleId},
 			UseOrgId:              false,
 		}
-		// Here is an example of an API call
 		kjvBibleId := "de4e12af7f28f599-02"
 		passage := "2TI.3.16-2TI.3.17"
 		biblePassage, biblePassageErr := GetBiblePassage(apiKey, kjvBibleId, passage, &biblePassageParams)
@@ -1497,9 +1401,6 @@ func ExampleGetBiblePassage() {
 		if biblePassageErr != nil {
 			fmt.Println("Do error handling for failing to get bible book sections here")
 		} else {
-			// Here is some boilerplate for handling errors and pretty-printing
-			// Note: The pretty-printing is just to make the output readable.
-			// You may not need to do this in your own production environment.
 			if getJsonFieldErr != nil {
 				fmt.Println("Do error handling for failing to get \"data\" field from JSON here")
 			} else {
@@ -1562,13 +1463,9 @@ func ExampleGetBibleChapterVerses() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of an API call
 		kjvBibleId := "de4e12af7f28f599-02"
 		chapterId := "PSA.117"
 		bibleChapterVerses, bibleChapterVersesErr := GetBibleChapterVerses(apiKey, kjvBibleId, chapterId)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if bibleChapterVersesErr != nil {
 			fmt.Println("Do error handling for failing to get bible book sections here")
 		} else {
@@ -1609,14 +1506,10 @@ func ExampleGetBibleVerseById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of all the possible API
-		// parameters used.
-		// You may use any subset of these parameters,
-		// including passing in a blank params.BibleVerseParams{} struct ref
-		// to the call to GetBibleVerseById.
 		kjvBibleId := "de4e12af7f28f599-02"
 		webBibleId := "32664dc3288a28df-03"
 		asvBibleId := "685d1470fe4d5c3b-01"
+		// All parameter fields are optional, and default to Golang's default values
 		bibleVerseParams := params.BibleVerseParams{
 			ContentType:           "text",
 			IncludeNotes:          false,
@@ -1629,9 +1522,6 @@ func ExampleGetBibleVerseById() {
 		}
 		verse := "JHN.3.16"
 		bibleVerse, bibleVerseErr := GetBibleVerseById(apiKey, kjvBibleId, verse, &bibleVerseParams)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if bibleVerseErr != nil {
 			fmt.Println("Do error handling for failing to get bible book sections here")
 		} else {
@@ -1639,9 +1529,6 @@ func ExampleGetBibleVerseById() {
 			if bibleVerseErr != nil {
 				fmt.Println("Do error handling for failing to get bible book sections here")
 			} else {
-				// Here is some boilerplate for handling errors and pretty-printing
-				// Note: The pretty-printing is just to make the output readable.
-				// You may not need to do this in your own production environment.
 				if getJsonFieldErr != nil {
 					fmt.Println("Do error handling for failing to get \"data\" field from JSON here")
 				} else {
@@ -1696,11 +1583,7 @@ func ExampleGetBibleSearchResults() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// Here is an example of all the possible API
-		// parameters used.
-		// You may use any subset of these parameters,
-		// including passing in a blank params.BibleSearchParams{} struct ref
-		// to the call to GetBibleSearchResults.
+		// All parameter fields are optional, and default to Golang's default values
 		bibleSearchParams := params.BibleSearchParams{
 			Query:     "Love",
 			Limit:     3,           // Default value is 10
@@ -1709,12 +1592,8 @@ func ExampleGetBibleSearchResults() {
 			Range:     "MAT.1-REV.22",
 			Fuzziness: "0", // Default value is AUTO. This accounts for difference in spelling
 		}
-		// Here is an example of an API call
 		kjvBibleId := "de4e12af7f28f599-02"
 		bibleSearchResult, bibleSearchErr := GetBibleSearchResults(apiKey, kjvBibleId, &bibleSearchParams)
-		// Here is some boilerplate for handling errors and pretty-printing
-		// Note: The pretty-printing is just to make the output readable.
-		// You may not need to do this in your own production environment.
 		if bibleSearchErr != nil {
 			fmt.Println("Do error handling for failing to get bible book sections here")
 		} else {
@@ -1722,9 +1601,6 @@ func ExampleGetBibleSearchResults() {
 			// This is required for duplicability of testing, as the metadata
 			// changes with every single API call.
 			bibleSearchResultData, getJsonFieldErr := utils.GetJsonField(bibleSearchResult, "data")
-			// Here is some boilerplate for handling errors and pretty-printing
-			// Note: The pretty-printing is just to make the output readable.
-			// You may not need to do this in your own production environment.
 			if getJsonFieldErr != nil {
 				fmt.Println("Do error handling for failing to get \"data\" field from JSON here")
 			} else {

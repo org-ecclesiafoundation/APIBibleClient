@@ -6,8 +6,8 @@
 package client
 
 import (
-	"ecclesiafoundation.org/APIBibleClient/pkg/client/internal"
-	"ecclesiafoundation.org/APIBibleClient/pkg/client/params"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/client/internal"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
 )
 
 // The GetBibles function calls the
