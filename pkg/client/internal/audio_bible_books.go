@@ -6,7 +6,7 @@
 package internal
 
 import (
-	"ecclesiafoundation.org/apibibleclient/pkg/client/params"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
 	"fmt"
 	"net/url"
 )

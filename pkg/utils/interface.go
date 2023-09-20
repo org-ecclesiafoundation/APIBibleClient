@@ -6,7 +6,7 @@
 package utils
 
 import (
-	"ecclesiafoundation.org/apibibleclient/pkg/utils/internal"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/utils/internal"
 	"os"
 	"time"
 )
