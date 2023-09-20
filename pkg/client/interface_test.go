@@ -31,10 +31,10 @@
 package client
 
 import (
-	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
-	"www.ecclesiafoundation.org/apibibleclient/pkg/utils"
 	"fmt"
 	"testing"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/utils"
 )
 
 func TestStub(t *testing.T) {}
@@ -1044,7 +1044,6 @@ func ExampleGetAudioBibleBookById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// All parameter fields are optional, and default to Golang's default values
 		audioBibleBookParams := params.AudioBibleBookParams{
 			IncludeChapters: true,
 		}
@@ -1131,7 +1130,8 @@ func ExampleGetBibleChapterById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		// All parameter fields are optional, and default to Golang's default values
+		asvBibleId := "685d1470fe4d5c3b-01"
+		webBibleId := "32664dc3288a28df-03"
 		bibleChapterParams := params.BibleChapterParams{
 			ContentType:           "text", // choices are html, json, and text (html is default)
 			IncludeNotes:          false,
@@ -1139,7 +1139,7 @@ func ExampleGetBibleChapterById() {
 			IncludeChapterNumbers: true,
 			IncludeVerseNumbers:   false,
 			IncludeVerseSpans:     false,
-			Parallels:             nil,
+			Parallels:             []string{asvBibleId, webBibleId},
 		}
 		kjvBibleId := "de4e12af7f28f599-02"
 		psalmChapter117Id := "PSA.117"
@@ -1176,6 +1176,19 @@ func ExampleGetBibleChapterById() {
 	//     "number": "118"
 	//   },
 	//   "number": "117",
+	//   "parallels": [
+	//     {
+	//       "bibleId": "32664dc3288a28df-03",
+	//       "bookId": "PSA",
+	//       "content": "117\n   [1] Praise Yahweh, all you nations!\n    Extol him, all you peoples!\n   [2] For his loving kindness is great toward us.\n    Yahweh’s faithfulness endures forever.\n  Praise Yah!\n",
+	//       "copyright": "PUBLIC DOMAIN (not copyrighted)",
+	//       "id": "PSA.117",
+	//       "number": "1",
+	//       "orgId": "PSA.117.1-PSA.117.2",
+	//       "reference": "Psalms 117",
+	//       "verseCount": 2
+	//     }
+	//   ],
 	//   "previous": {
 	//     "bookId": "PSA",
 	//     "id": "PSA.116",
@@ -1339,8 +1352,8 @@ func ExampleGetBibleSectionById() {
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
 		kjvBibleId := "de4e12af7f28f599-02"
-		webBibleId := "32664dc3288a28df-03"
 		asvBibleId := "685d1470fe4d5c3b-01"
+		webBibleId := "32664dc3288a28df-03"
 		// All parameter fields are optional, and default to Golang's default values
 		bibleSectionParams := params.BibleSectionParams{
 			ContentType:           "text",
@@ -1378,8 +1391,8 @@ func ExampleGetBiblePassage() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		webBibleId := "32664dc3288a28df-03"
 		asvBibleId := "685d1470fe4d5c3b-01"
+		webBibleId := "32664dc3288a28df-03"
 		// All parameter fields are optional, and default to Golang's default values
 		biblePassageParams := params.BiblePassageParams{
 			ContentType:           "text",
@@ -1507,8 +1520,8 @@ func ExampleGetBibleVerseById() {
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
 		kjvBibleId := "de4e12af7f28f599-02"
-		webBibleId := "32664dc3288a28df-03"
 		asvBibleId := "685d1470fe4d5c3b-01"
+		webBibleId := "32664dc3288a28df-03"
 		// All parameter fields are optional, and default to Golang's default values
 		bibleVerseParams := params.BibleVerseParams{
 			ContentType:           "text",

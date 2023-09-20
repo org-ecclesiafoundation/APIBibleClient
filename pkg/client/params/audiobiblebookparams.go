@@ -8,7 +8,10 @@ package params
 import "net/url"
 
 // The AudioBibleBookParams struct contains all optional parameters
-// for the API call to the `audio-bibles/{audioBibleId}/books/{bookId}` end point
+// for the API call to the `audio-bibles/{audioBibleId}/books/{bookId}` end point.
+// All parameter fields are optional, and default to Golang's default values.
+// All blank or default parameters do not show up in the query parameter string
+// produced by the ProduceQueryParameters() method.
 type AudioBibleBookParams struct {
 	IncludeChapters bool
 }

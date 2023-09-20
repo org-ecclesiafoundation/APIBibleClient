@@ -9,6 +9,9 @@ import "net/url"
 
 // The AudioBiblesParams struct contains all optional parameters
 // for the API call to the `audio-bibles` end point.
+// All parameter fields are optional, and default to Golang's default values.
+// All blank or default parameters do not show up in the query parameter string
+// produced by the ProduceQueryParameters() method.
 type AudioBiblesParams struct {
 	Language           string
 	Abbreviation       string

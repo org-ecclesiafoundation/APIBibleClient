@@ -24,16 +24,17 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 ## Functionality
 As of 2023-09-17, the functionality mirrors that which is found in the API documentation found here: https://scripture.api.bible/livedocs In order to use this, you must have an API key which you can get from the folks at https://scripture.api.bible
+
+## Testing the Library
+All tests can be run with the `make test` command. Test suites can also be individually run. Please consult the Makefile for more details.
+
 ## TODO
 ### Prior to releasing v1.0 the following needs to be done:
 - Make doctest examples of utils
-- Make doctest examples of params
-- Review all doctest examples to ensure they look good on pkg.go.dev
+- Review all doctest examples and documentation to ensure they look good on pkg.go.dev
+
 ### Maintenance
 - Keep up on the scripture.api.bible live documentation
-- Keep up if they decide to turn the experimental functionality into actual functionality
-- better document the params and clean up the examples at bare minimum.
-- give examples of each util in action by itself.
-- write a set of high-level blurbs in the README to help guide folks to the right stuff in the package documentation.
-- set up at least a monthly cadence of running the tests to see if the API has changed, and at least a quarterly review of the API documentation to see if there are any new versions or endpoints.
-That will take it from something I'd be ashamed to put a v1.0.0 tag on, to something that mightn't be optimal, but at least deserves the tag.
+- Keep up if they decide to turn the experimental functionality into actual functionality by periodically testing the library and looking for failures.
+- Set up at least a monthly cadence of running the tests to see if the API has changed, and at least a quarterly review of the API documentation to see if there are any new versions or endpoints.
+- Write a set of high-level blurbs in the README to help guide folks to the right stuff in the package documentation.

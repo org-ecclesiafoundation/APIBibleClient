@@ -10,7 +10,9 @@ import (
 )
 
 // The CanProduceQueryParams interface exists
-// to help with producing URLs with query parameters
+// to help with producing URLs with query parameters.
+// <ImplementingParamStruct>.ProduceQueryParameters().Encode()
+// yields a string of query parameters for an HTTP request.
 type CanProduceQueryParams interface {
 	ProduceQueryParameters() url.Values
 }

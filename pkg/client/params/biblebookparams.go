@@ -9,6 +9,9 @@ import "net/url"
 
 // The BibleBookParams struct contains all optional parameters
 // for the API call to the `bibles/{bibleId}/books/{bookId}` end point
+// All parameter fields are optional, and default to Golang's default values.
+// All blank or default parameters do not show up in the query parameter string
+// produced by the ProduceQueryParameters() method.
 type BibleBookParams struct {
 	IncludeChapters bool
 }

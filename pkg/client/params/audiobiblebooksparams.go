@@ -9,6 +9,9 @@ import "net/url"
 
 // The AudioBibleBooksParams struct contains all optional parameters
 // for the API call to the `bibles/{audioBibleId}/books` end point
+// All parameter fields are optional, and default to Golang's default values.
+// All blank or default parameters do not show up in the query parameter string
+// produced by the ProduceQueryParameters() method.
 type AudioBibleBooksParams struct {
 	IncludeChapters            bool
 	IncludeChaptersAndSections bool
@@ -20,7 +23,7 @@ func (params *AudioBibleBooksParams) ProduceQueryParameters() url.Values {
 		values.Add("include-chapters", "true")
 	}
 	if params.IncludeChaptersAndSections {
-		values.Add("include-chapters", "true")
+		values.Add("include-chapters-and-sections", "true")
 	}
 	return values
 }
