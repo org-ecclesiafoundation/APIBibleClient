@@ -25,10 +25,10 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 ## Functionality
 As of 2023-09-17, the functionality mirrors that which is found in the API documentation found here: https://scripture.api.bible/livedocs In order to use this, you must have an API key which you can get from the folks at https://scripture.api.bible
 ## TODO
-Prior to releasing v1.0 the following needs to be done:
-### One-Time After Release
-- Ensure that the appropriate metadata exists on ecclesiafoundation.org in order that the go package might be indexed.
-- Do any other work associated with the indexing of the go package.
+### Prior to releasing v1.0 the following needs to be done:
+- Make doctest examples of utils
+- Make doctest examples of params
+- Review all doctest examples to ensure they look good on pkg.go.dev
 ### Maintenance
 - Keep up on the scripture.api.bible live documentation
 - Keep up if they decide to turn the experimental functionality into actual functionality
