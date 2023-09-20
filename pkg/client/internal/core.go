@@ -6,8 +6,8 @@
 package internal
 
 import (
-	"ecclesiafoundation.org/APIBibleClient/pkg/client/params"
-	"ecclesiafoundation.org/APIBibleClient/pkg/utils"
+	"ecclesiafoundation.org/apibibleclient/pkg/client/params"
+	"ecclesiafoundation.org/apibibleclient/pkg/utils"
 	"encoding/json"
 	"io"
 	"net/http"

@@ -31,10 +31,10 @@
 package client
 
 import (
+	"ecclesiafoundation.org/apibibleclient/pkg/client/params"
+	"ecclesiafoundation.org/apibibleclient/pkg/utils"
 	"fmt"
 	"testing"
-	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
-	"www.ecclesiafoundation.org/apibibleclient/pkg/utils"
 )
 
 func TestStub(t *testing.T) {}
