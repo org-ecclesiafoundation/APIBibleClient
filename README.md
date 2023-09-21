@@ -17,15 +17,19 @@ As of 2023-09-17, the functionality mirrors that which is found in the API docum
 All tests can be run with the `make test` command. Test suites can also be individually run. Please consult the Makefile for more details.
 
 ## TODO
-### Prior to releasing v1.0 the following needs to be done:
-- Make doctest examples of utils
-- Review all doctest examples and documentation to ensure they look good on pkg.go.dev
+
+### Prior to releasing v1.0:
+- Review all doctest examples and documentation to ensure they make sense and look good on pkg.go.dev
+- Write a set of high-level blurbs in the README to help guide folks to the right stuff in the package documentation.
+
+### Prior to releasing v1.1:
+- Add bible verse lexer/parser
+- Add uberclient.GetBibleReference(apiKey, bibleId, reference ...)
 
 ### Maintenance
 - Keep up on the scripture.api.bible live documentation
 - Keep up if they decide to turn the experimental functionality into actual functionality by periodically testing the library and looking for failures.
 - Set up at least a monthly cadence of running the tests to see if the API has changed, and at least a quarterly review of the API documentation to see if there are any new versions or endpoints.
-- Write a set of high-level blurbs in the README to help guide folks to the right stuff in the package documentation.
 
 ## Licenses
 
