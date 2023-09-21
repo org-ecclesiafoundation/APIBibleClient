@@ -6,9 +6,9 @@
 package utils
 
 import (
-	"www.ecclesiafoundation.org/apibibleclient/pkg/utils/internal"
 	"os"
 	"time"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/utils/internal"
 )
 
 const (
@@ -26,7 +26,8 @@ func Prettify(json string) (string, error) {
 }
 
 // GetApiKey retrieves API key from
-// the environment variable, SCRIPTURE_API_BIBLE_KEY
+// the environment variable, `SCRIPTURE_API_BIBLE_KEY`
+// if it's not blank. Otherwise, it returns an error.
 func GetApiKey() (string, error) {
 	return internal.GetApiKey()
 }
