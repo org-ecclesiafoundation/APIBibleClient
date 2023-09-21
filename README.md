@@ -1,14 +1,13 @@
 # APIBibleClient
 
 ## In Brief
+This is a Go Language API Bible Client for the https://scripture.api.bible site
 
 Please refer to the below link for the Go Package Documentation
 
 [![Go Reference](https://pkg.go.dev/badge/www.ecclesiafoundation.org/apibibleclient.svg)](https://pkg.go.dev/www.ecclesiafoundation.org/apibibleclient)
 
 Link to [Licenses](#Licenses)
-
-Go Language API Bible Client for the https://scripture.api.bible site
 
 ## Functionality
 As of 2023-09-17, the functionality mirrors that which is found in the API documentation found here: https://scripture.api.bible/livedocs In order to use this, you must have an API key which you can get from the folks at https://scripture.api.bible
