@@ -1542,15 +1542,14 @@ func ExampleGetBibleVerseById() {
 			// This is required for duplicability of testing, as the metadata
 			// changes with every single API call.
 			bibleVerseData, getJsonFieldErr := utils.GetJsonField(bibleVerse, "data")
-				if getJsonFieldErr != nil {
-					fmt.Println("Do error handling for failing to get \"data\" field from JSON here")
+			if getJsonFieldErr != nil {
+				fmt.Println("Do error handling for failing to get \"data\" field from JSON here")
+			} else {
+				prettyVerseData, prettifyErr := utils.Prettify(bibleVerseData)
+				if prettifyErr != nil {
+					fmt.Println("Do error handling for failing to make pretty JSON here")
 				} else {
-					prettyVerseData, prettifyErr := utils.Prettify(bibleVerseData)
-					if prettifyErr != nil {
-						fmt.Println("Do error handling for failing to make pretty JSON here")
-					} else {
-						fmt.Println(prettyVerseData)
-					}
+					fmt.Println(prettyVerseData)
 				}
 			}
 		}
