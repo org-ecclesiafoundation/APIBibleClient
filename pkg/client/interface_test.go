@@ -1407,13 +1407,13 @@ func ExampleGetBiblePassage() {
 		kjvBibleId := "de4e12af7f28f599-02"
 		passage := "2TI.3.16-2TI.3.17"
 		biblePassage, biblePassageErr := GetBiblePassage(apiKey, kjvBibleId, passage, &biblePassageParams)
-		// Here is an example of getting a single field from the response.
-		// This is required for duplicability of testing, as the metadata
-		// changes with every single API call.
-		biblePassageData, getJsonFieldErr := utils.GetJsonField(biblePassage, "data")
 		if biblePassageErr != nil {
 			fmt.Println("Do error handling for failing to get bible book sections here")
 		} else {
+			// Here is an example of getting a single field from the response.
+			// This is required for duplicability of testing, as the metadata
+			// changes with every single API call.
+			biblePassageData, getJsonFieldErr := utils.GetJsonField(biblePassage, "data")
 			if getJsonFieldErr != nil {
 				fmt.Println("Do error handling for failing to get \"data\" field from JSON here")
 			} else {
@@ -1536,12 +1536,12 @@ func ExampleGetBibleVerseById() {
 		verse := "JHN.3.16"
 		bibleVerse, bibleVerseErr := GetBibleVerseById(apiKey, kjvBibleId, verse, &bibleVerseParams)
 		if bibleVerseErr != nil {
-			fmt.Println("Do error handling for failing to get bible book sections here")
+			fmt.Println("Do error handling for failing to get bible verse here")
 		} else {
+			// Here is an example of getting a single field from the response.
+			// This is required for duplicability of testing, as the metadata
+			// changes with every single API call.
 			bibleVerseData, getJsonFieldErr := utils.GetJsonField(bibleVerse, "data")
-			if bibleVerseErr != nil {
-				fmt.Println("Do error handling for failing to get bible book sections here")
-			} else {
 				if getJsonFieldErr != nil {
 					fmt.Println("Do error handling for failing to get \"data\" field from JSON here")
 				} else {
