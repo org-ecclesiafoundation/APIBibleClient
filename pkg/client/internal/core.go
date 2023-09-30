@@ -6,13 +6,13 @@
 package internal
 
 import (
-	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
-	"www.ecclesiafoundation.org/apibibleclient/pkg/utils"
 	"encoding/json"
 	"io"
 	"net/http"
 	"net/url"
 	"path"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/params"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/utils"
 )
 
 const (
