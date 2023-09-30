@@ -33,7 +33,7 @@ package client
 import (
 	"fmt"
 	"testing"
-	params2 "www.ecclesiafoundation.org/apibibleclient/pkg/params"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
 	"www.ecclesiafoundation.org/apibibleclient/pkg/utils"
 )
 
@@ -47,7 +47,7 @@ func ExampleGetBibles() {
 	} else {
 		kjvBibleId := "de4e12af7f28f599-02"
 		// All parameter fields are optional, and default to Golang's default values
-		biblesParams := params2.BiblesParams{
+		biblesParams := params.BiblesParams{
 			Language:           "eng",
 			Abbreviation:       "kjv",
 			Name:               "King James",
@@ -165,7 +165,7 @@ func ExampleGetAudioBibles() {
 	} else {
 		worldEnglishBibleID := "9879dbb7cfe39e4d-01"
 		// All parameter fields are optional, and default to Golang's default values
-		audioBiblesParams := params2.AudioBiblesParams{
+		audioBiblesParams := params.AudioBiblesParams{
 			Language:           "eng",
 			Abbreviation:       "WEB13",
 			Name:               "World English",
@@ -280,7 +280,7 @@ func ExampleGetBibleBooks() {
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
 		// All parameter fields are optional, and default to Golang's default values
-		bibleBooksParams := params2.BibleBooksParams{
+		bibleBooksParams := params.BibleBooksParams{
 			IncludeChapters:            false,
 			IncludeChaptersAndSections: false,
 		}
@@ -773,7 +773,7 @@ func ExampleGetBibleBookById() {
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
 		// All parameter fields are optional, and default to Golang's default values
-		bibleBookParams := params2.BibleBookParams{
+		bibleBookParams := params.BibleBookParams{
 			IncludeChapters: true,
 		}
 		kjvBibleId := "de4e12af7f28f599-02"
@@ -825,7 +825,7 @@ func ExampleGetAudioBibleBooks() {
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
 		// All parameter fields are optional, and default to Golang's default values
-		audioBibleBooksParams := params2.AudioBibleBooksParams{
+		audioBibleBooksParams := params.AudioBibleBooksParams{
 			IncludeChapters:            false,
 			IncludeChaptersAndSections: false,
 		}
@@ -1044,7 +1044,7 @@ func ExampleGetAudioBibleBookById() {
 		fmt.Println("Failed to get API key.\n" +
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
-		audioBibleBookParams := params2.AudioBibleBookParams{
+		audioBibleBookParams := params.AudioBibleBookParams{
 			IncludeChapters: true,
 		}
 		webAudioBibleId := "105a06b6146d11e7-01"
@@ -1132,7 +1132,7 @@ func ExampleGetBibleChapterById() {
 	} else {
 		asvBibleId := "685d1470fe4d5c3b-01"
 		webBibleId := "32664dc3288a28df-03"
-		bibleChapterParams := params2.BibleChapterParams{
+		bibleChapterParams := params.BibleChapterParams{
 			ContentType:           "text", // choices are html, json, and text (html is default)
 			IncludeNotes:          false,
 			IncludeTitles:         false,
@@ -1355,7 +1355,7 @@ func ExampleGetBibleSectionById() {
 		asvBibleId := "685d1470fe4d5c3b-01"
 		webBibleId := "32664dc3288a28df-03"
 		// All parameter fields are optional, and default to Golang's default values
-		bibleSectionParams := params2.BibleSectionParams{
+		bibleSectionParams := params.BibleSectionParams{
 			ContentType:           "text",
 			IncludeNotes:          false,
 			IncludeTitles:         false,
@@ -1394,7 +1394,7 @@ func ExampleGetBiblePassage() {
 		asvBibleId := "685d1470fe4d5c3b-01"
 		webBibleId := "32664dc3288a28df-03"
 		// All parameter fields are optional, and default to Golang's default values
-		biblePassageParams := params2.BiblePassageParams{
+		biblePassageParams := params.BiblePassageParams{
 			ContentType:           "text",
 			IncludeNotes:          false,
 			IncludeTitles:         false,
@@ -1523,7 +1523,7 @@ func ExampleGetBibleVerseById() {
 		asvBibleId := "685d1470fe4d5c3b-01"
 		webBibleId := "32664dc3288a28df-03"
 		// All parameter fields are optional, and default to Golang's default values
-		bibleVerseParams := params2.BibleVerseParams{
+		bibleVerseParams := params.BibleVerseParams{
 			ContentType:           "text",
 			IncludeNotes:          false,
 			IncludeTitles:         false,
@@ -1596,7 +1596,7 @@ func ExampleGetBibleSearchResults() {
 			"Please set the environment variable SCRIPTURE_API_BIBLE_KEY to the appropriate value")
 	} else {
 		// All parameter fields are optional, and default to Golang's default values
-		bibleSearchParams := params2.BibleSearchParams{
+		bibleSearchParams := params.BibleSearchParams{
 			Query:     "Love",
 			Limit:     3,           // Default value is 10
 			Offset:    5,           // Pagination

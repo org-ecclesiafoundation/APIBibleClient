@@ -6,7 +6,7 @@
 package uberclient
 
 import (
-	"www.ecclesiafoundation.org/apibibleclient/pkg/params"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
 	"www.ecclesiafoundation.org/apibibleclient/pkg/uberclient/internal"
 )
 

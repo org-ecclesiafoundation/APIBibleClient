@@ -6,9 +6,9 @@
 package internal
 
 import (
+	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
 	"fmt"
 	"net/url"
-	"www.ecclesiafoundation.org/apibibleclient/pkg/params"
 )
 
 func GetBibles(apiKey string, params *params.BiblesParams) (string, error) {

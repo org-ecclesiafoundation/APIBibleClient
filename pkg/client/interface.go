@@ -7,12 +7,12 @@ package client
 
 import (
 	"www.ecclesiafoundation.org/apibibleclient/pkg/client/internal"
-	params2 "www.ecclesiafoundation.org/apibibleclient/pkg/params"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
 )
 
 // The GetBibles function calls the
 // `/bibles` end point of the API
-func GetBibles(apiKey string, params *params2.BiblesParams) (string, error) {
+func GetBibles(apiKey string, params *params.BiblesParams) (string, error) {
 	return internal.GetBibles(apiKey, params)
 }
 
@@ -24,7 +24,7 @@ func GetBibleById(apiKey string, bibleId string) (string, error) {
 
 // The GetAudioBibles function calls the
 // `/audio-bibles` end point of the API
-func GetAudioBibles(apiKey string, params *params2.AudioBiblesParams) (string, error) {
+func GetAudioBibles(apiKey string, params *params.AudioBiblesParams) (string, error) {
 	return internal.GetAudioBibles(apiKey, params)
 }
 
@@ -36,25 +36,25 @@ func GetAudioBibleById(apiKey string, bibleId string) (string, error) {
 
 // The GetBibleBooks function calls the
 // `/bibles/{bibleId}/books` end point of the API
-func GetBibleBooks(apiKey string, bibleId string, params *params2.BibleBooksParams) (string, error) {
+func GetBibleBooks(apiKey string, bibleId string, params *params.BibleBooksParams) (string, error) {
 	return internal.GetBibleBooks(apiKey, bibleId, params)
 }
 
 // The GetBibleBookById function calls the
 // `/bibles/{bibleId}/books/{bookId}` end point of the API
-func GetBibleBookById(apiKey string, bibleId string, bookId string, params *params2.BibleBookParams) (string, error) {
+func GetBibleBookById(apiKey string, bibleId string, bookId string, params *params.BibleBookParams) (string, error) {
 	return internal.GetBibleBookById(apiKey, bibleId, bookId, params)
 }
 
 // The GetAudioBibleBooks function calls the
 // `/audio-bibles/{audioBibleId}/books` end point of the API
-func GetAudioBibleBooks(apiKey string, audioBibleId string, params *params2.AudioBibleBooksParams) (string, error) {
+func GetAudioBibleBooks(apiKey string, audioBibleId string, params *params.AudioBibleBooksParams) (string, error) {
 	return internal.GetAudioBibleBooks(apiKey, audioBibleId, params)
 }
 
 // The GetAudioBibleBookById function calls the
 // `/audio-bibles/{audioBibleId}/books/{bookId}` end point of the API
-func GetAudioBibleBookById(apiKey string, audioBibleId string, bookId string, params *params2.AudioBibleBookParams) (string, error) {
+func GetAudioBibleBookById(apiKey string, audioBibleId string, bookId string, params *params.AudioBibleBookParams) (string, error) {
 	return internal.GetAudioBibleBookById(apiKey, audioBibleId, bookId, params)
 }
 
@@ -66,7 +66,7 @@ func GetBibleChapters(apiKey string, bibleId string, bookId string) (string, err
 
 // The GetBibleChapterById function calls the
 // `/bibles/{bibleId}/chapters/{chapterId}` end point of the API
-func GetBibleChapterById(apiKey string, bibleId string, chapterId string, params *params2.BibleChapterParams) (string, error) {
+func GetBibleChapterById(apiKey string, bibleId string, chapterId string, params *params.BibleChapterParams) (string, error) {
 	return internal.GetBibleChapterById(apiKey, bibleId, chapterId, params)
 }
 
@@ -96,13 +96,13 @@ func GetBibleChapterSections(apiKey string, bibleId string, chapterId string) (s
 
 // The GetBibleSectionById function calls the
 // `/bibles/{bibleId}/sections/{sectionId}` end point of the API
-func GetBibleSectionById(apiKey string, bibleId string, sectionId string, params *params2.BibleSectionParams) (string, error) {
+func GetBibleSectionById(apiKey string, bibleId string, sectionId string, params *params.BibleSectionParams) (string, error) {
 	return internal.GetBibleSectionById(apiKey, bibleId, sectionId, params)
 }
 
 // The GetBiblePassage function calls the
 // `/bibles/{bibleId}/passages/{passageId}` end point of the API
-func GetBiblePassage(apiKey string, bibleId string, passageId string, params *params2.BiblePassageParams) (string, error) {
+func GetBiblePassage(apiKey string, bibleId string, passageId string, params *params.BiblePassageParams) (string, error) {
 	return internal.GetBiblePassage(apiKey, bibleId, passageId, params)
 }
 
@@ -114,12 +114,12 @@ func GetBibleChapterVerses(apiKey string, bibleId string, chapterId string) (str
 
 // The GetBibleVerseById function calls the
 // `/bibles/{bibleId}/verses/{verseId}` end point of the API
-func GetBibleVerseById(apiKey string, bibleId string, verseId string, params *params2.BibleVerseParams) (string, error) {
+func GetBibleVerseById(apiKey string, bibleId string, verseId string, params *params.BibleVerseParams) (string, error) {
 	return internal.GetBibleVerseById(apiKey, bibleId, verseId, params)
 }
 
 // The GetBibleSearchResults function calls the
 // `/bibles/{bibleId}/search` end point of the API
-func GetBibleSearchResults(apiKey string, bibleId string, params *params2.BibleSearchParams) (string, error) {
+func GetBibleSearchResults(apiKey string, bibleId string, params *params.BibleSearchParams) (string, error) {
 	return internal.GetBibleSearchResults(apiKey, bibleId, params)
 }

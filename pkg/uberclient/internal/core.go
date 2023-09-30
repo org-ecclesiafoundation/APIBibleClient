@@ -7,7 +7,7 @@ package internal
 
 import (
 	"www.ecclesiafoundation.org/apibibleclient/pkg/client"
-	"www.ecclesiafoundation.org/apibibleclient/pkg/params"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
 )
 
 func GetBibleReference(apiKey string, bibleId string, reference string, params *params.BiblePassageParams) (string, error) {
