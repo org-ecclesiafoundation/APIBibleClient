@@ -6,10 +6,21 @@
 package uberclient
 
 import (
-	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/client"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/data"
+	"www.ecclesiafoundation.org/apibibleclient/pkg/params"
 	"www.ecclesiafoundation.org/apibibleclient/pkg/uberclient/internal"
 )
 
 func GetBibleReference(apiKey string, bibleId string, reference string, params *params.BiblePassageParams) (string, error) {
 	return internal.GetBibleReference(apiKey, bibleId, reference, params)
+}
+
+func GetBibleBooks(apiKey string, bibleId string, params *params.BibleBooksParams) (data.BibleBooks, error) {
+	bibleBooks, getBibleBooksError := client.GetBibleBooks(apiKey, bibleId, params)
+	if getBibleBooksError != nil {
+		return data.BibleBooks{}, getBibleBooksError
+	} else {
+		return data.ToBibleBooks(bibleBooks)
+	}
 }

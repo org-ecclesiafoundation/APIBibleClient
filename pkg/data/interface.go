@@ -28,6 +28,7 @@ type BibleBooks struct {
 	ids            []string
 }
 
+// Count tells how many books are in a BibleBooks struct
 func (bibleBooks *BibleBooks) Count() int {
 	return bibleBooks.count
 }
@@ -97,7 +98,8 @@ func (bibleBooks *BibleBooks) FuzzyFind(input string) (BibleBook, error) {
 	}
 }
 
-// TODO: integrate this with the client
+// ToBibleBooks takes a JSON body and attempts
+// to convert it to a BibleBooks struct.
 func ToBibleBooks(body string) (BibleBooks, error) {
 	var bibleBooks BibleBooks
 	jsonUnmarshalErr := json.Unmarshal([]byte(body), &bibleBooks)
@@ -124,4 +126,11 @@ func ToBibleBooks(body string) (BibleBooks, error) {
 		bibleBooks.ids = ids
 		return bibleBooks, nil
 	}
+}
+
+// ToJson attempts to convert a BibleBooks struct to a pretty JSON.
+// Note: Here, pretty JSON means, indentation is two spaces.
+func (bibleBooks *BibleBooks) ToJson() (string, error) {
+	jsonBody, jsonMarshalError := json.MarshalIndent(bibleBooks, "", "  ")
+	return string(jsonBody), jsonMarshalError
 }
