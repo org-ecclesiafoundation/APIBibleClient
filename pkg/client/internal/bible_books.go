@@ -6,27 +6,27 @@
 package internal
 
 import (
-	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
 	"fmt"
 	"net/url"
+	params2 "www.ecclesiafoundation.org/apibibleclient/pkg/params"
 )
 
-func GetBibleBooks(apiKey string, bibleId string, params *params.BibleBooksParams) (string, error) {
+func GetBibleBooks(apiKey string, bibleId string, params *params2.BibleBooksParams) (string, error) {
 	apiUrl := produceBibleBooksApiUrl(bibleId, params)
 	return genericGetRequest(apiKey, apiUrl)
 }
 
-func GetBibleBookById(apiKey string, bibleId string, bookId string, params *params.BibleBookParams) (string, error) {
+func GetBibleBookById(apiKey string, bibleId string, bookId string, params *params2.BibleBookParams) (string, error) {
 	apiUrl := produceBibleBookApiUrl(bibleId, bookId, params)
 	return genericGetRequest(apiKey, apiUrl)
 }
 
-func produceBibleBooksApiUrl(bibleId string, params *params.BibleBooksParams) *url.URL {
+func produceBibleBooksApiUrl(bibleId string, params *params2.BibleBooksParams) *url.URL {
 	path := fmt.Sprintf("/bibles/%s/books", bibleId)
 	return produceGenericUrlWithQueryParams(path, params)
 }
 
-func produceBibleBookApiUrl(bibleId string, bookId string, params *params.BibleBookParams) *url.URL {
+func produceBibleBookApiUrl(bibleId string, bookId string, params *params2.BibleBookParams) *url.URL {
 	path := fmt.Sprintf("/bibles/%s/books/%s", bibleId, bookId)
 	return produceGenericUrlWithQueryParams(path, params)
 }

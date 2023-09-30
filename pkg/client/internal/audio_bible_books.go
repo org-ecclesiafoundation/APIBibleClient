@@ -6,27 +6,27 @@
 package internal
 
 import (
-	"www.ecclesiafoundation.org/apibibleclient/pkg/client/params"
 	"fmt"
 	"net/url"
+	params2 "www.ecclesiafoundation.org/apibibleclient/pkg/params"
 )
 
-func GetAudioBibleBooks(apiKey string, audioBibleId string, params *params.AudioBibleBooksParams) (string, error) {
+func GetAudioBibleBooks(apiKey string, audioBibleId string, params *params2.AudioBibleBooksParams) (string, error) {
 	apiUrl := produceAudioBibleBooksApiUrl(audioBibleId, params)
 	return genericGetRequest(apiKey, apiUrl)
 }
 
-func GetAudioBibleBookById(apiKey string, audioBibleId string, bookId string, params *params.AudioBibleBookParams) (string, error) {
+func GetAudioBibleBookById(apiKey string, audioBibleId string, bookId string, params *params2.AudioBibleBookParams) (string, error) {
 	apiUrl := produceAudioBibleBookApiUrl(audioBibleId, bookId, params)
 	return genericGetRequest(apiKey, apiUrl)
 }
 
-func produceAudioBibleBooksApiUrl(audioBibleId string, params *params.AudioBibleBooksParams) *url.URL {
+func produceAudioBibleBooksApiUrl(audioBibleId string, params *params2.AudioBibleBooksParams) *url.URL {
 	path := fmt.Sprintf("/audio-bibles/%s/books", audioBibleId)
 	return produceGenericUrlWithQueryParams(path, params)
 }
 
-func produceAudioBibleBookApiUrl(audioBibleId string, bookId string, params *params.AudioBibleBookParams) *url.URL {
+func produceAudioBibleBookApiUrl(audioBibleId string, bookId string, params *params2.AudioBibleBookParams) *url.URL {
 	path := fmt.Sprintf("/audio-bibles/%s/books/%s", audioBibleId, bookId)
 	return produceGenericUrlWithQueryParams(path, params)
 }
